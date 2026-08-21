@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://rdkrehmrynyj"]
+
+[ext_resource type="Texture2D" uid="uid://hei5vk0ljrtt" path="res://Assets/placeholder.png" id="1_6dd5x"]
+[ext_resource type="Script" uid="uid://bc6r06tpnw215" path="res://Scripts/Scripts Cenas/menu_principal.gd" id="1_hfrx1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("1_6dd5x")
+modulate_color = Color(0.48178947, 0.48178947, 0.48178947, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dd5x"]
+bg_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfrx1"]
+bg_color = Color(0.737193, 0.7371929, 0.7371929, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgc76"]
+bg_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[node name="Menu_principal" type="Control" unique_id=1831768900]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hfrx1")
+
+[node name="Menu_Cenario" type="Panel" parent="." unique_id=508187272]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1518260410]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.75
+offset_top = -75.0
+offset_right = 167.75
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Iniciar" type="Button" parent="VBoxContainer" unique_id=835483329]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.1331962, 0.13319656, 0.13319623, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_g4v7s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6dd5x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hfrx1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xgc76")
+text = "Iniciar jogo"
+
+[node name="Sair" type="Button" parent="VBoxContainer" unique_id=2005368966]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.1331962, 0.13319656, 0.13319623, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_g4v7s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6dd5x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hfrx1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xgc76")
+text = "Sair
+"
+
+[node name="TituloLabel" type="Label" parent="." unique_id=1097940948]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -186.0
+offset_top = 42.0
+offset_right = 186.0
+offset_bottom = 132.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 65
+text = "Parrassonia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Sair" to="." method="_on_sair_pressed"]

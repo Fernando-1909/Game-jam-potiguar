@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bu1abqpgyex1a"]
 
-[ext_resource type="Script" uid="uid://bducurc01ylyl" path="res://Scripts/Scripts Scenes/MainScenes.gd" id="1_tkmsp"]
-[ext_resource type="Script" uid="uid://0wav4q4wk1ep" path="res://Scripts/Scripts Mechanics/player.gd" id="2_5yw3w"]
+[ext_resource type="Script" uid="uid://bducurc01ylyl" path="res://Scripts/Scripts Cenas/MainScenes.gd" id="1_tkmsp"]
+[ext_resource type="Script" uid="uid://0wav4q4wk1ep" path="res://Scripts/Scripts Mecanicas/player.gd" id="2_5yw3w"]
 [ext_resource type="Texture2D" uid="uid://mb8vi8pmxc8q" path="res://icon.svg" id="3_qtktj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
