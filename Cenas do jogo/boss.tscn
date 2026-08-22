@@ -11,27 +11,27 @@ script = ExtResource("1_n4y6c")
 position = Vector2(10, 166)
 texture = ExtResource("2_xy1wo")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=614757028]
+[node name="CameraBoss" type="Camera2D" parent="." unique_id=614757028]
 
-[node name="PosicaoMaoEsquerda" type="Marker2D" parent="." unique_id=327974609]
+[node name="MarkerMaoEsq" type="Marker2D" parent="." unique_id=327974609]
 
-[node name="PosicaoMaoDireita" type="Marker2D" parent="." unique_id=465022336]
+[node name="MarkerMaoDir" type="Marker2D" parent="." unique_id=465022336]
 
-[node name="TimerAtaque" type="Timer" parent="." unique_id=625455503]
+[node name="MaoEsquerda" parent="." unique_id=239169949 instance=ExtResource("1_77kgm")]
 
-[node name="MaosBoss" parent="." unique_id=239169949 instance=ExtResource("1_77kgm")]
-
-[node name="SpriteMaos" parent="MaosBoss" index="0" unique_id=90961405]
+[node name="SpriteMaos" parent="MaoEsquerda" index="0" unique_id=90961405]
 position = Vector2(60, 50.999996)
 scale = Vector2(0.5703125, 0.484375)
 texture = ExtResource("2_xy1wo")
 
-[node name="MaosBoss2" parent="." unique_id=1378191127 instance=ExtResource("1_77kgm")]
+[node name="MaoDireita" parent="." unique_id=1378191127 instance=ExtResource("1_77kgm")]
 
-[node name="SpriteMaos" parent="MaosBoss2" index="0" unique_id=90961405]
+[node name="SpriteMaos" parent="MaoDireita" index="0" unique_id=90961405]
 position = Vector2(60, 288.99997)
 scale = Vector2(0.40625, 0.4765625)
 texture = ExtResource("2_xy1wo")
 
-[editable path="MaosBoss"]
-[editable path="MaosBoss2"]
+[node name="TimerAtaque" type="Timer" parent="." unique_id=625455503]
+
+[editable path="MaoEsquerda"]
+[editable path="MaoDireita"]
