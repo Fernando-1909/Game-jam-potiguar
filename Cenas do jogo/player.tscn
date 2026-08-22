@@ -10,20 +10,14 @@ size = Vector2(13, 14)
 script = ExtResource("1_ficc6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1092907623]
-position = Vector2(-39.5, -42.5)
 scale = Vector2(1.04, 1)
 texture = ExtResource("2_ficc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1657811113]
-position = Vector2(-40.5, -42)
 shape = SubResource("RectangleShape2D_y0spx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=165528365]
-position = Vector2(438, 111)
-limit_left = 0
-limit_top = -9999904
-limit_right = 727379968
-limit_bottom = 720
+zoom = Vector2(2.5, 2.5)
 limit_smoothed = true
 position_smoothing_enabled = true
 
