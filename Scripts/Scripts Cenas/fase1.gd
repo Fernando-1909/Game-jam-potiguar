@@ -10,7 +10,7 @@ var pode_alternar: bool = true
 @export var tempo_espera_alternancia: float = 0.3
 
 const COR_REALIDADE = Color(1.0, 1.0, 1.0)
-const COR_SONHO = Color(0.4, 0.2, 0.7)
+const COR_SONHO = Color(0.735, 0.539, 0.118, 1.0)
 
 
 func _ready():
