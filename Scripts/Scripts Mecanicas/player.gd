@@ -1,20 +1,20 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const VELOCIDADE = 300.0
+const VELOCIDADE_PULO = -400.0
+var gravidade = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += gravidade * delta
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = VELOCIDADE_PULO
 
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+	var direcao = Input.get_axis("ui_left", "ui_right")
+	if direcao:
+		velocity.x = direcao * VELOCIDADE
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, VELOCIDADE)
 
 	move_and_slide()
