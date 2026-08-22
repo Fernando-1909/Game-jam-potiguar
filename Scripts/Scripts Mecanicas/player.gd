@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 # Parametros de fisica - Mundo Real (Acordada)
 const VELOCIDADE_REAL: float = 350.0
-const PULO_REAL: float = -700.0
+const PULO_REAL: float = -590.0
 const MULTIPLICADOR_GRAVIDADE_REAL: float = 1.0
 
 # Parametros de fisica - Ecdise (Mundo dos Sonhos)
 const VELOCIDADE_SONHO: float = 180.0
-const PULO_SONHO: float = -700.0
+const PULO_SONHO: float = -590.0
 const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.55
 
 # Parametros de Knockback
@@ -222,3 +222,8 @@ func morrer() -> void:
 
 	if is_inside_tree() and get_tree():
 		get_tree().reload_current_scene()
+
+func _input(event):
+	if (event.is_action_pressed("Descer")):
+		print("desceu")
+		position.y += 5
