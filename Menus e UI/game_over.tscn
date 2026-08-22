@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dwhmx4fpj74yk"]
 
+[ext_resource type="Script" uid="uid://dyxsxejuwvw1o" path="res://Menus e UI/game_over.gd" id="1_0fwmo"]
 [ext_resource type="Texture2D" uid="uid://cx88xc7gl046w" path="res://Menus e UI/Assets/TelaGameOver.png" id="1_pokat"]
 [ext_resource type="FontFile" uid="uid://7upr75g88p00" path="res://Menus e UI/Assets/DotGothic16-Regular.ttf" id="2_602t0"]
 [ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="3_602t0"]
@@ -24,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0fwmo")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1087364460]
 layout_mode = 1
@@ -171,3 +173,6 @@ bbcode_enabled = true
 text = "SAIR"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]

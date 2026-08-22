@@ -142,7 +142,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Falling",
-"speed": 10.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -180,7 +180,7 @@ animations = [{
 }],
 "loop": 2,
 "name": &"Idle",
-"speed": 10.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -200,7 +200,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Jump",
-"speed": 10.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -229,7 +229,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Walk",
-"speed": 10.0
+"speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0spx"]
@@ -241,10 +241,8 @@ script = ExtResource("1_ficc6")
 
 [node name="SpriteProtagonista" type="AnimatedSprite2D" parent="." unique_id=1588295951]
 sprite_frames = SubResource("SpriteFrames_rs0my")
-animation = &"Jump"
+animation = &"Walk"
 autoplay = "Idle"
-frame = 3
-frame_progress = 0.19458294
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1657811113]
