@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bq4rciw4id8ew"
-path="res://.godot/imported/ari-w9500-condensed.ttf-808046362731ed518702c5cd4dd8a06b.fontdata"
+uid="uid://dwf66heuds860"
+path="res://.godot/imported/Jersey15-Regular.ttf-e7379e79a26ba109425ce8f42f267737.fontdata"
 
 [deps]
 
-source_file="res://Menus e UI/Assets/ari-w9500-condensed.ttf"
-dest_files=["res://.godot/imported/ari-w9500-condensed.ttf-808046362731ed518702c5cd4dd8a06b.fontdata"]
+source_file="res://Menus e UI/Assets/Jersey15-Regular.ttf"
+dest_files=["res://.godot/imported/Jersey15-Regular.ttf-e7379e79a26ba109425ce8f42f267737.fontdata"]
 
 [params]
 

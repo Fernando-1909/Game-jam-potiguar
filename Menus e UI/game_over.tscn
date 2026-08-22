@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cx88xc7gl046w" path="res://Menus e UI/Assets/TelaGameOver.png" id="1_pokat"]
 [ext_resource type="FontFile" uid="uid://7upr75g88p00" path="res://Menus e UI/Assets/DotGothic16-Regular.ttf" id="2_602t0"]
-[ext_resource type="FontFile" uid="uid://cb1lgeqvyp1po" path="res://Menus e UI/Assets/ari-w9500-condensed-bold.ttf" id="3_0fwmo"]
+[ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="3_602t0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bspta"]
 texture = ExtResource("1_pokat")
@@ -128,8 +128,8 @@ theme_override_constants/shadow_outline_size = 15
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 6
 theme_override_constants/outline_size = 15
-theme_override_fonts/normal_font = ExtResource("3_0fwmo")
-theme_override_font_sizes/normal_font_size = 47
+theme_override_fonts/normal_font = ExtResource("3_602t0")
+theme_override_font_sizes/normal_font_size = 65
 bbcode_enabled = true
 text = "REINICIAR"
 horizontal_alignment = 1
@@ -161,8 +161,8 @@ theme_override_constants/shadow_outline_size = 24
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 15
-theme_override_fonts/normal_font = ExtResource("3_0fwmo")
-theme_override_font_sizes/normal_font_size = 50
+theme_override_fonts/normal_font = ExtResource("3_602t0")
+theme_override_font_sizes/normal_font_size = 65
 bbcode_enabled = true
 text = "SAIR"
 horizontal_alignment = 1
