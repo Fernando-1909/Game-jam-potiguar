@@ -47,8 +47,11 @@ func apply_dimension_state(animated: bool = true):
 	else:
 		atmosphere.color = target_color
 
-# Desativa visibilidade e colisão de todos os elementos dentro do nó filho
 func set_container_active(container: Node2D, active: bool):
+	if not is_instance_valid(container):
+		push_warning("Aviso: Um dos contêineres não foi encontrado na árvore de cena.")
+		return
+
 	container.visible = active
 	_toggle_collisions_recursive(container, active)
 
