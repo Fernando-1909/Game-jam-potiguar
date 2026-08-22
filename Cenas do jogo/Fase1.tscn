@@ -68,8 +68,14 @@ texture = ExtResource("3_fytks")
 5:2/0 = 0
 4:2/0 = 0
 5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4.13675, -8, -4.4964676)
+5:1/0/physics_layer_0/polygon_0/one_way = true
 6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4.13675, -8, -4.4964676)
+6:1/0/physics_layer_0/polygon_0/one_way = true
 7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4.13675, -8, -4.4964676)
+7:1/0/physics_layer_0/polygon_0/one_way = true
 
 [sub_resource type="TileSet" id="TileSet_w1ihk"]
 physics_layer_0/collision_layer = 1
@@ -163,7 +169,7 @@ tile_set = SubResource("TileSet_f64ho")
 [node name="ObjetosSonho" type="Node2D" parent="." unique_id=1168421200]
 
 [node name="TileMapSonho" type="TileMapLayer" parent="ObjetosSonho" unique_id=1025636780]
-tile_map_data = PackedByteArray("AAAaACQAAAAAAAEAAAAaACUAAAAAAAIAAAAaACYAAAAAAAMAAAAbACQAAAABAAEAAAAbACUAAAABAAIAAAAbACYAAAABAAMAAAAcACQAAAACAAEAAAAcACUAAAACAAIAAAAcACYAAAACAAMAAAAaACMAAAAAAAAAAAAbACMAAAABAAAAAAAPACEAAAAAAAQAAAAQACEAAAABAAQAAAARACEAAAACAAQAAAA=")
+tile_map_data = PackedByteArray("AAAaACQAAAAAAAEAAAAaACUAAAAAAAIAAAAaACYAAAAAAAMAAAAbACQAAAABAAEAAAAbACUAAAABAAIAAAAbACYAAAABAAMAAAAcACQAAAACAAEAAAAcACUAAAACAAIAAAAcACYAAAACAAMAAAAaACMAAAAAAAAAAAAbACMAAAABAAAAAAAPACEAAAAAAAQAAAAQACEAAAABAAQAAAARACEAAAACAAQAAAAKACgAAAAFAAEAAAALACgAAAAGAAEAAAAMACgAAAAHAAEAAAA=")
 tile_set = SubResource("TileSet_w1ihk")
 
 [node name="TileMapSonhosObjetos" type="TileMapLayer" parent="ObjetosSonho" unique_id=328321890]
