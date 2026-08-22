@@ -10,6 +10,8 @@ const VELOCIDADE_SONHO: float = 180.0
 const PULO_SONHO: float = -950.0
 const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.55
 
+@onready var SpriteProtagonista = $SpriteProtagonista
+
 # Parametros do Sistema de Insonia (0 a 100)
 @export var insonia_maxima: int = 100
 var insonia_atual: int = 0
@@ -56,6 +58,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, velocidade_atual)
 
 	move_and_slide()
+	
+	if direcao == 1.0:
+		SpriteProtagonista.flip_h = false
+	elif direcao == -1.0:
+		SpriteProtagonista.flip_h = true
 
 # Incrementa ou decrementa a insonia em intervalos fixos de 0.5 segundos
 func _processar_insonia(delta: float) -> void:
