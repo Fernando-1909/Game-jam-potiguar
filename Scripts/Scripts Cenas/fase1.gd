@@ -15,8 +15,7 @@ const COR_SONHO = Color(0.4, 0.2, 0.7)
 
 func _ready():
 	add_to_group("fase_atual")
-
-	# Define o estado inicial da fase (começa acordada, na realidade)
+	# Define o estado inicial da fase (comeca acordada, na realidade)
 	aplicar_estado(false)
 
 
@@ -34,13 +33,16 @@ func alternar_estado():
 
 
 func aplicar_estado(animado: bool = true):
-	# Ativa os objetos do estado "acordada" (realidade) e desativa se estiver sonhando
+	# Ativa ou desativa os containers de cada dimensao
 	definir_container_ativo(objetos_realidade, !esta_sonhando)
-
-	# Ativa os objetos do estado "sonhando" e desativa se estiver acordada
 	definir_container_ativo(objetos_sonho, esta_sonhando)
 
-	# Transição da cor do ambiente conforme o estado
+	# Atualiza a fisica no script player.gd
+	var jogador = get_node_or_null("Player")
+	if jogador and jogador.has_method("atualizar_modo_sonho"):
+		jogador.atualizar_modo_sonho(esta_sonhando)
+
+	# Transicao da cor do ambiente conforme o estado
 	var cor_alvo = COR_SONHO if esta_sonhando else COR_REALIDADE
 
 	if animado:
@@ -52,7 +54,7 @@ func aplicar_estado(animado: bool = true):
 
 func definir_container_ativo(container: Node2D, ativo: bool):
 	if not is_instance_valid(container):
-		push_warning("Aviso: Um dos containers não foi encontrado na árvore de cena.")
+		push_warning("Aviso: Um dos containers nao foi encontrado na arvore de cena.")
 		return
 
 	container.visible = ativo
@@ -63,12 +65,8 @@ func _alternar_colisoes_recursivo(node: Node, ativo: bool):
 	if node is CollisionShape2D or node is CollisionPolygon2D:
 		node.set_deferred("disabled", !ativo)
 	elif node is TileMapLayer:
-		# TileMapLayer (Godot 4.3+): a propriedade "enabled" desliga desenho,
-		# colisão e navegação da camada inteira de uma vez só.
 		node.set_deferred("enabled", ativo)
 	elif node is TileMap:
-		# TileMap antigo, com várias camadas dentro do mesmo nó: desativa
-		# colisão/navegação/desenho camada por camada.
 		for camada in node.get_layers_count():
 			node.set_layer_enabled(camada, ativo)
 
