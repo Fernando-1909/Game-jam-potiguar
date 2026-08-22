@@ -45,13 +45,17 @@ animations = [{
 
 [node name="Boss" type="Node2D" unique_id=1364269770]
 script = ExtResource("1_n4y6c")
+margem_esquerda_pixels = 30.0
 
 [node name="SpriteBoss" type="AnimatedSprite2D" parent="." unique_id=1824576613]
-scale = Vector2(5.78125, 4.6249995)
+scale = Vector2(3.75, 3)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"Acertado"
 
 [node name="CameraBoss" type="Camera2D" parent="." unique_id=614757028]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+position_smoothing_enabled = true
 
 [node name="MarkerMaoEsq" type="Marker2D" parent="." unique_id=327974609]
 position = Vector2(22, -119)
@@ -62,10 +66,8 @@ position = Vector2(30, 109)
 [node name="MaoEsquerda" parent="." unique_id=239169949 instance=ExtResource("1_77kgm")]
 
 [node name="SpriteMaos" parent="MaoEsquerda" index="0" unique_id=1099965930]
-visible = true
 position = Vector2(0, 0)
 scale = Vector2(1.8125002, 1.7812501)
-animation = &"MaoEsquerda"
 
 [node name="CollisionShape2D" parent="MaoEsquerda" index="1" unique_id=1886918157]
 position = Vector2(0, 0)
@@ -73,7 +75,6 @@ position = Vector2(0, 0)
 [node name="MaoDireita" parent="." unique_id=1378191127 instance=ExtResource("1_77kgm")]
 
 [node name="SpriteMaos" parent="MaoDireita" index="0" unique_id=1099965930]
-visible = true
 position = Vector2(0, 0)
 scale = Vector2(1.8750001, 1.6874993)
 

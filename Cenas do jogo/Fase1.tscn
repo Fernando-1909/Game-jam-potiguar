@@ -215,7 +215,7 @@ script = ExtResource("1_w1ihk")
 position = Vector2(-2, 1)
 
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
-position = Vector2(51, 648)
+position = Vector2(732, 484)
 
 [node name="ObjetosRealidade" type="Node2D" parent="." unique_id=1828136548]
 
@@ -242,8 +242,13 @@ tile_map_data = PackedByteArray("AAAAACwAAwACAAIAAAABACwAAwADAAIAAAACACwAAwACAAI
 tile_set = SubResource("TileSet_yopmv")
 
 [node name="Boss" parent="." unique_id=1364269770 instance=ExtResource("5_c43i4")]
-position = Vector2(877, 570)
+position = Vector2(81, 552)
+margem_esquerda_pixels = 40.0
 
 [node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node") instance=ExtResource("6_7v7xm")]
 position = Vector2(859, 317)
 boss_node = NodePath("../Boss")
+
+[editable path="Boss"]
+[editable path="Boss/MaoEsquerda"]
+[editable path="Boss/MaoDireita"]
