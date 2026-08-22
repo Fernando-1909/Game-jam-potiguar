@@ -167,3 +167,4 @@ texture = ExtResource("3_xgc76")
 
 [connection signal="pressed" from="VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="VBoxContainer/Créditos" to="." method="_on_créditos_pressed"]

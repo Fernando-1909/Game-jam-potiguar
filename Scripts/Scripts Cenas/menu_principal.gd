@@ -18,3 +18,7 @@ func _on_iniciar_pressed() -> void:
 func _on_sair_pressed() -> void:
 	print("Sair pressionado, jogo fechado!")
 	get_tree().quit()
+
+func _on_créditos_pressed() -> void:
+	print("Indo par tela de crétidos")
+	get_tree().change_scene_to_file("res://Menus e UI/tela_creditos.tscn")
