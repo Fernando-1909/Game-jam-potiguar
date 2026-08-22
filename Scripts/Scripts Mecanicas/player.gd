@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
+@onready var SpriteProtagonista = $SpriteProtagonista
+
 # Parametros de fisica - Mundo Real (Acordada)
 const VELOCIDADE_REAL: float = 155.0
 const PULO_REAL: float = -590.0
 const MULTIPLICADOR_GRAVIDADE_REAL: float = 1.0
+
+
 
 # Parametros de fisica - Ecdise (Mundo dos Sonhos)
 const VELOCIDADE_SONHO: float = 97.0
@@ -13,8 +17,6 @@ const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.55
 # Parametros de Knockback
 const FORCA_KNOCKBACK_X: float = 250.0
 const FORCA_KNOCKBACK_Y: float = -300.0
-
-@onready var SpriteProtagonista = $SpriteProtagonista
 
 # Parametros do Sistema de Insonia (0 a 100)
 @export var insonia_maxima: int = 100
@@ -46,8 +48,15 @@ func _ready() -> void:
 		barra_vida.min_value = 0
 		barra_vida.max_value = insonia_maxima
 		_atualizar_interface_ui()
+	
 
 func _physics_process(delta: float) -> void:
+	# Adicionar animação
+	if velocity.x > 1 or velocity.x < -1:
+		SpriteProtagonista.animation = "Walk"
+	else:
+		SpriteProtagonista.animation = "Idle"
+	
 	if esta_morto:
 		return
 
@@ -56,11 +65,17 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		var gravidade_calculada = gravidade_base * multiplicador_gravidade_atual
 		velocity.y += gravidade_calculada * delta
+		if velocity.y > 0:
+			SpriteProtagonista.animation = "Falling"
+		elif velocity.y < 0:
+			SpriteProtagonista.animation = "Jump"
+
 
 	# Enquanto estiver sofrendo o impulse de knockback, o input do jogador fica bloqueado
 	if not esta_em_knockback:
 		if Input.is_action_just_pressed("Pulo") and is_on_floor():
 			velocity.y = pulo_atual
+
 
 		var direcao = Input.get_axis("Esquerda", "Direita")
 		if direcao:
