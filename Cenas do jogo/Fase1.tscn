@@ -3,46 +3,46 @@
 [ext_resource type="Script" uid="uid://bducurc01ylyl" path="res://Scripts/Scripts Cenas/fase1.gd" id="1_w1ihk"]
 [ext_resource type="PackedScene" uid="uid://jstausjhbsiw" path="res://Cenas do jogo/player.tscn" id="2_w1ihk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(48.5, 99)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(1126, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(48.5, 99)
 
 [node name="Fase1" type="Node2D" unique_id=1038904787]
 script = ExtResource("1_w1ihk")
 
 [node name="Ambiente" type="CanvasModulate" parent="." unique_id=797854252]
 
-[node name="Parede" type="StaticBody2D" parent="." unique_id=239789613]
-position = Vector2(247, 127)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parede" unique_id=1082203534]
-position = Vector2(459, 432.5)
-shape = SubResource("RectangleShape2D_57qmd")
-
-[node name="ColorRect" type="ColorRect" parent="Parede" unique_id=1346151748]
-offset_left = 437.0
-offset_top = 382.0
-offset_right = 483.0
-offset_bottom = 482.0
-
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
 
-[node name="ObjetosRealidade" type="Node2D" parent="." unique_id=1828136548]
-
-[node name="Plataforma" type="StaticBody2D" parent="ObjetosRealidade" unique_id=899222881]
+[node name="Plataforma" type="StaticBody2D" parent="." unique_id=899222881]
 position = Vector2(243, 431)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetosRealidade/Plataforma" unique_id=652756235]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma" unique_id=652756235]
 position = Vector2(341, 199)
 shape = SubResource("RectangleShape2D_yf5fn")
 
-[node name="ColorRect" type="ColorRect" parent="ObjetosRealidade/Plataforma" unique_id=1383108409]
+[node name="ColorRect" type="ColorRect" parent="Plataforma" unique_id=1383108409]
 offset_left = -229.0
 offset_top = 176.0
 offset_right = 904.0
 offset_bottom = 220.0
 color = Color(0.41565582, 0.42206636, 0.24224648, 1)
+
+[node name="ObjetosRealidade" type="Node2D" parent="." unique_id=1828136548]
+
+[node name="Parede" type="StaticBody2D" parent="ObjetosRealidade" unique_id=239789613]
+position = Vector2(247, 127)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetosRealidade/Parede" unique_id=1082203534]
+position = Vector2(459, 432.5)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="ColorRect" type="ColorRect" parent="ObjetosRealidade/Parede" unique_id=1346151748]
+offset_left = 437.0
+offset_top = 382.0
+offset_right = 483.0
+offset_bottom = 482.0
 
 [node name="ObjetosSonho" type="Node2D" parent="." unique_id=1168421200]

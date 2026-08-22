@@ -1,9 +1,5 @@
 extends Node2D
 
-# Tecla usada para alternar entre os estados "acordada" e "sonhando".
-# Fica centralizada aqui em cima pra ser fácil de trocar depois.
-const TECLA_ALTERNAR_ESTADO = KEY_Z
-
 @onready var objetos_realidade: Node2D = $ObjetosRealidade
 @onready var objetos_sonho: Node2D = $ObjetosSonho
 @onready var ambiente: CanvasModulate = $Ambiente
@@ -18,6 +14,11 @@ const COR_SONHO = Color(0.4, 0.2, 0.7)
 
 
 func _ready():
+	# Entra no grupo que o player usa para avisar "troca de estado agora"
+	# (get_tree().call_group("fase_atual", "alternar_estado")).
+	# Assim qualquer fase nova que entrar nesse grupo já funciona sem mexer no player.
+	add_to_group("fase_atual")
+
 	# Define o estado inicial da fase (começa acordada, na realidade)
 	aplicar_estado(false)
 
@@ -25,13 +26,10 @@ func _ready():
 	#player.position = Vector2(100, 100)
 
 
-func _unhandled_input(event):
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == TECLA_ALTERNAR_ESTADO and pode_alternar:
-			alternar_estado()
-
-
 func alternar_estado():
+	if not pode_alternar:
+		return
+
 	esta_sonhando = !esta_sonhando
 	pode_alternar = false
 
