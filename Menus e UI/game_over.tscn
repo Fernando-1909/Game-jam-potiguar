@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://dwhmx4fpj74yk"]
 
 [ext_resource type="Texture2D" uid="uid://cx88xc7gl046w" path="res://Menus e UI/Assets/TelaGameOver.png" id="1_pokat"]
+[ext_resource type="FontFile" uid="uid://7upr75g88p00" path="res://Menus e UI/Assets/DotGothic16-Regular.ttf" id="2_602t0"]
+[ext_resource type="FontFile" uid="uid://cb1lgeqvyp1po" path="res://Menus e UI/Assets/ari-w9500-condensed-bold.ttf" id="3_0fwmo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bspta"]
 texture = ExtResource("1_pokat")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hgtue"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37yws"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wl0ym"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_883ev"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3bb7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wnl8d"]
 
 [node name="GameOver" type="Control" unique_id=2117096851]
 layout_mode = 3
@@ -41,29 +49,57 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_bspta")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/PanelContainer" unique_id=1097756183]
 layout_mode = 2
-theme_override_constants/separation = 82
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=1090822802]
+[node name="Voce" type="RichTextLabel" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=1877738141]
+clip_contents = false
 layout_mode = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(0, 48)
+offset_transform_position = Vector2(0, 14)
+theme_override_colors/default_color = Color(0.76565146, 0.43118978, 0.77105206, 1)
+theme_override_colors/font_outline_color = Color(0.30055442, 0.00014244295, 0.34014273, 1)
+theme_override_colors/font_shadow_color = Color(0.21676803, 5.851496e-05, 0.23775378, 1)
+theme_override_constants/line_separation = 0
+theme_override_constants/shadow_outline_size = 15
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("2_602t0")
+theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]GAME OVER[/center]"
+text = "[center]VOCÊ[/center]"
+fit_content = true
+
+[node name="Colapsou" type="RichTextLabel" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=1090822802]
+clip_contents = false
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -6)
+theme_override_colors/default_color = Color(0.76565146, 0.43118978, 0.77105206, 1)
+theme_override_colors/font_outline_color = Color(0.30055442, 0.00014244295, 0.34014273, 1)
+theme_override_colors/font_shadow_color = Color(0.21676803, 5.851496e-05, 0.23775378, 1)
+theme_override_constants/line_separation = 0
+theme_override_constants/shadow_outline_size = 15
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("2_602t0")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]COLAPSOU[/center]"
 fit_content = true
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=898302708]
 layout_mode = 2
 theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 45
+theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=1146222623]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 20
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Reiniciar" type="Button" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=712070713]
@@ -71,20 +107,33 @@ custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxEmpty_hgtue")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_37yws")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wl0ym")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_883ev")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e3bb7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wnl8d")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Reiniciar" unique_id=1364083940]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 35.0
-offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_colors/default_color = Color(0.8576931, 0.75982505, 0.99999946, 1)
+theme_override_colors/font_outline_color = Color(0.31423163, 0.14538115, 0.3809873, 1)
+theme_override_colors/font_shadow_color = Color(0.21133083, 0.12814942, 0.24570006, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("3_0fwmo")
+theme_override_font_sizes/normal_font_size = 47
 bbcode_enabled = true
-text = "[center]REINICIAR[/center]"
+text = "REINICIAR"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sair" type="Button" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1599318493]
 custom_minimum_size = Vector2(300, 100)
@@ -92,16 +141,29 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxEmpty_37yws")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wl0ym")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_883ev")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e3bb7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wnl8d")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Sair" unique_id=1435941198]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 35.0
-offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.6509804, 0.654902, 1)
+theme_override_colors/font_outline_color = Color(0.38039216, 0.14509805, 0.14901961, 1)
+theme_override_colors/font_shadow_color = Color(0.21960784, 0.08627451, 0.08627451, 1)
+theme_override_constants/shadow_outline_size = 24
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("3_0fwmo")
+theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]SAIR[/center]"
+text = "SAIR"
+horizontal_alignment = 1
+vertical_alignment = 1
