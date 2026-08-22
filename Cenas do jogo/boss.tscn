@@ -2,34 +2,84 @@
 
 [ext_resource type="PackedScene" uid="uid://bxg23an2dv6c5" path="res://Cenas do jogo/maos_boss.tscn" id="1_77kgm"]
 [ext_resource type="Script" uid="uid://dkdorfl228uvo" path="res://Scripts/Scripts Cenas/boss.gd" id="1_n4y6c"]
-[ext_resource type="Texture2D" uid="uid://mb8vi8pmxc8q" path="res://icon.svg" id="2_xy1wo"]
+[ext_resource type="Texture2D" uid="uid://mbjixi1vdaap" path="res://Assets/bossSide.png" id="2_n4y6c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy1wo"]
+atlas = ExtResource("2_n4y6c")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp7tl"]
+atlas = ExtResource("2_n4y6c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h28j"]
+atlas = ExtResource("2_n4y6c")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy1wo")
+}],
+"loop": 1,
+"name": &"Acertado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp7tl")
+}],
+"loop": 1,
+"name": &"Acerto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h28j")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Boss" type="Node2D" unique_id=1364269770]
 script = ExtResource("1_n4y6c")
 
-[node name="SpriteBoss" type="Sprite2D" parent="." unique_id=1797844082]
-position = Vector2(10, 166)
-texture = ExtResource("2_xy1wo")
+[node name="SpriteBoss" type="AnimatedSprite2D" parent="." unique_id=1824576613]
+position = Vector2(96.00001, 171)
+scale = Vector2(5.78125, 4.6249995)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"Acertado"
 
 [node name="CameraBoss" type="Camera2D" parent="." unique_id=614757028]
 
 [node name="MarkerMaoEsq" type="Marker2D" parent="." unique_id=327974609]
+position = Vector2(60, 299)
 
 [node name="MarkerMaoDir" type="Marker2D" parent="." unique_id=465022336]
+position = Vector2(64, 52)
 
 [node name="MaoEsquerda" parent="." unique_id=239169949 instance=ExtResource("1_77kgm")]
 
-[node name="SpriteMaos" parent="MaoEsquerda" index="0" unique_id=90961405]
-position = Vector2(60, 50.999996)
-scale = Vector2(0.5703125, 0.484375)
-texture = ExtResource("2_xy1wo")
+[node name="SpriteMaos" parent="MaoEsquerda" index="0" unique_id=1099965930]
+position = Vector2(60, 51.5)
+scale = Vector2(1.8125002, 1.7812501)
+frame_progress = 0.46878904
+
+[node name="CollisionShape2D" parent="MaoEsquerda" index="1" unique_id=1886918157]
+position = Vector2(61, 52)
 
 [node name="MaoDireita" parent="." unique_id=1378191127 instance=ExtResource("1_77kgm")]
 
-[node name="SpriteMaos" parent="MaoDireita" index="0" unique_id=90961405]
-position = Vector2(60, 288.99997)
-scale = Vector2(0.40625, 0.4765625)
-texture = ExtResource("2_xy1wo")
+[node name="SpriteMaos" parent="MaoDireita" index="0" unique_id=1099965930]
+position = Vector2(58, 285)
+scale = Vector2(1.8750001, 1.6874993)
+animation = &"default"
+frame_progress = 0.13747387
+
+[node name="CollisionShape2D" parent="MaoDireita" index="1" unique_id=1886918157]
+position = Vector2(61, 286)
 
 [node name="TimerAtaque" type="Timer" parent="." unique_id=625455503]
 

@@ -1,6 +1,76 @@
 [gd_scene format=3 uid="uid://bxg23an2dv6c5"]
 
 [ext_resource type="Script" uid="uid://cat8wkt8m60c6" path="res://Scripts/Scripts Cenas/maos_boss.gd" id="1_dkuha"]
+[ext_resource type="Texture2D" uid="uid://mbjixi1vdaap" path="res://Assets/bossSide.png" id="2_2fage"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_extuh"]
+atlas = ExtResource("2_2fage")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srv80"]
+atlas = ExtResource("2_2fage")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek0tk"]
+atlas = ExtResource("2_2fage")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cteab"]
+atlas = ExtResource("2_2fage")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fage"]
+atlas = ExtResource("2_2fage")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt0ei"]
+atlas = ExtResource("2_2fage")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsph8"]
+atlas = ExtResource("2_2fage")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnai1"]
+atlas = ExtResource("2_2fage")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_extuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srv80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek0tk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cteab")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fage")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt0ei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsph8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnai1")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fage"]
 size = Vector2(63, 58)
@@ -8,7 +78,10 @@ size = Vector2(63, 58)
 [node name="MaosBoss" type="Area2D" unique_id=239169949]
 script = ExtResource("1_dkuha")
 
-[node name="SpriteMaos" type="Sprite2D" parent="." unique_id=90961405]
+[node name="SpriteMaos" type="AnimatedSprite2D" parent="." unique_id=1099965930]
+position = Vector2(235, 113)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886918157]
 position = Vector2(40, 28)
