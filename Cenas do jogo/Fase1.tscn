@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bducurc01ylyl" path="res://Scripts/Scripts Cenas/fase1.gd" id="1_w1ihk"]
 [ext_resource type="PackedScene" uid="uid://jstausjhbsiw" path="res://Cenas do jogo/player.tscn" id="2_w1ihk"]
+[ext_resource type="Texture2D" uid="uid://dqy5w66ayl08m" path="res://Assets/Tile casa.png" id="3_f64ho"]
 [ext_resource type="Texture2D" uid="uid://cbuotudrp6n4i" path="res://Assets/Tile sonho.png" id="3_fytks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
@@ -9,6 +10,17 @@ size = Vector2(1823, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
 size = Vector2(48.5, 99)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ptt1"]
+texture = ExtResource("3_f64ho")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rs0my"]
+sources/0 = SubResource("TileSetAtlasSource_7ptt1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gu7o8"]
 texture = ExtResource("3_fytks")
@@ -90,6 +102,9 @@ offset_top = 382.0
 offset_right = 483.0
 offset_bottom = 482.0
 metadata/_edit_use_anchors_ = true
+
+[node name="TileMapRealidade" type="TileMapLayer" parent="ObjetosRealidade" unique_id=991403410]
+tile_set = SubResource("TileSet_rs0my")
 
 [node name="ObjetosSonho" type="Node2D" parent="." unique_id=1168421200]
 
