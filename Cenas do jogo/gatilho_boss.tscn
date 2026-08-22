@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ubk8undx4vhj"]
+
+[ext_resource type="Script" uid="uid://bb7fua2l2ealb" path="res://Scripts/Scripts Cenas/gatilho_boss.gd" id="1_rkqf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(30, 381)
+
+[node name="GatilhoBoss" type="Area2D" unique_id=1139002131]
+script = ExtResource("1_rkqf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=914446959]
+position = Vector2(26, 196)
+shape = SubResource("RectangleShape2D_g4v7s")

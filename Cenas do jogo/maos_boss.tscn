@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bxg23an2dv6c5"]
+
+[ext_resource type="Script" uid="uid://cat8wkt8m60c6" path="res://Scripts/Scripts Cenas/maos_boss.gd" id="1_dkuha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fage"]
+size = Vector2(63, 58)
+
+[node name="MaosBoss" type="Area2D" unique_id=239169949]
+script = ExtResource("1_dkuha")
+
+[node name="SpriteMaos" type="Sprite2D" parent="." unique_id=90961405]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886918157]
+position = Vector2(40, 28)
+shape = SubResource("RectangleShape2D_2fage")
