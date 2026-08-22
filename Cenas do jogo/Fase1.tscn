@@ -185,27 +185,8 @@ tile_map_data = PackedByteArray("AAAAACwAAAAAAAAAAAABACwAAAAAAAAAAAACACwAAAAAAAA
 tile_set = SubResource("TileSet_yopmv")
 
 [node name="Boss" parent="." unique_id=1364269770 instance=ExtResource("5_c43i4")]
-position = Vector2(686, 204)
-
-[node name="SpriteBoss" parent="Boss" index="0" unique_id=1797844082]
-position = Vector2(-17, 321)
-
-[node name="MarkerMaoEsq" parent="Boss" index="2" unique_id=327974609]
-position = Vector2(37, 450)
-
-[node name="MarkerMaoDir" parent="Boss" index="3" unique_id=465022336]
-position = Vector2(39, 207)
-
-[node name="MaoEsquerda" parent="Boss" index="4" unique_id=239169949]
-position = Vector2(-27, 155)
-
-[node name="MaoDireita" parent="Boss" index="5" unique_id=1378191127]
-position = Vector2(-27, 155)
+position = Vector2(877, 570)
 
 [node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node") instance=ExtResource("6_7v7xm")]
 position = Vector2(859, 317)
 boss_node = NodePath("../Boss")
-
-[editable path="Boss"]
-[editable path="Boss/MaoEsquerda"]
-[editable path="Boss/MaoDireita"]

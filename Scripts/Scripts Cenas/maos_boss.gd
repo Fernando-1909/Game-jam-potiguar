@@ -6,32 +6,29 @@ var estado_atual: Estado = Estado.REPOUSO
 var alvo_posicao: Vector2
 var posicao_origem: Marker2D
 var ativo: bool = false
+var nome_animacao: String = ""
 
-const VELOCIDADE_ATAQUE: float = 650.0
+@onready var sprite_animado: AnimatedSprite2D = $SpriteMaos if has_node("SpriteMaos") else null
+
+const VELOCIDADE_ATAQUE: float = 700.0
 const VELOCIDADE_RETORNO: float = 450.0
 
 func _ready() -> void:
 	add_to_group("dano")
 	body_entered.connect(_on_body_entered)
-	# Desativa colisao e processamento no inicio para nao causar dano antecipado
 	monitoring = false
 	monitorable = false
-	set_process(false)
-
-func ativar_mao() -> void:
-	ativo = true
-	monitoring = true
-	monitorable = true
-	set_process(true)
+	top_level = true
 
 func _process(delta: float) -> void:
-	if not ativo or not is_instance_valid(posicao_origem):
+	if not is_instance_valid(posicao_origem):
 		return
 
 	match estado_atual:
 		Estado.REPOUSO:
-			# Trava a posicao diretamente no marcador em movimento continuo
+			# Acompanha rigidamente o marcador no espaço global
 			global_position = posicao_origem.global_position
+			rotation = lerp_angle(rotation, 0.0, 10.0 * delta)
 
 		Estado.ATACANDO:
 			global_position = global_position.move_toward(alvo_posicao, VELOCIDADE_ATAQUE * delta)
@@ -39,16 +36,36 @@ func _process(delta: float) -> void:
 				estado_atual = Estado.RETORNANDO
 
 		Estado.RETORNANDO:
-			# Segue o marcador em movimento no mapa
 			var destino_atual = posicao_origem.global_position
 			global_position = global_position.move_toward(destino_atual, VELOCIDADE_RETORNO * delta)
-			
-			if global_position.distance_to(destino_atual) < 20.0:
+			rotation = lerp_angle(rotation, 0.0, 8.0 * delta)
+			if global_position.distance_to(destino_atual) < 15.0:
+				global_position = destino_atual
+				rotation = 0.0
 				estado_atual = Estado.REPOUSO
 
+func ativar_mao() -> void:
+	ativo = true
+	monitoring = true
+	monitorable = true
+
+	if is_instance_valid(posicao_origem):
+		global_position = posicao_origem.global_position
+
+	if sprite_animado:
+		if nome_animacao != "" and sprite_animado.sprite_frames and sprite_animado.sprite_frames.has_animation(nome_animacao):
+			sprite_animado.play(nome_animacao)
+		else:
+			sprite_animado.play()
+
+func pode_atacar() -> bool:
+	return ativo and estado_atual == Estado.REPOUSO
+
 func atacar(ponto_alvo: Vector2) -> void:
-	if ativo and estado_atual == Estado.REPOUSO:
-		alvo_posicao = ponto_alvo
+	if pode_atacar():
+		look_at(ponto_alvo)
+		var direcao = (ponto_alvo - global_position).normalized()
+		alvo_posicao = ponto_alvo + (direcao * 80.0)
 		estado_atual = Estado.ATACANDO
 
 func _on_body_entered(body: Node2D) -> void:

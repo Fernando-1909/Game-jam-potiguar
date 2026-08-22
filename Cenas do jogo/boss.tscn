@@ -47,7 +47,6 @@ animations = [{
 script = ExtResource("1_n4y6c")
 
 [node name="SpriteBoss" type="AnimatedSprite2D" parent="." unique_id=1824576613]
-position = Vector2(96.00001, 171)
 scale = Vector2(5.78125, 4.6249995)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"Acertado"
@@ -55,31 +54,31 @@ animation = &"Acertado"
 [node name="CameraBoss" type="Camera2D" parent="." unique_id=614757028]
 
 [node name="MarkerMaoEsq" type="Marker2D" parent="." unique_id=327974609]
-position = Vector2(60, 299)
+position = Vector2(22, -119)
 
 [node name="MarkerMaoDir" type="Marker2D" parent="." unique_id=465022336]
-position = Vector2(64, 52)
+position = Vector2(30, 109)
 
 [node name="MaoEsquerda" parent="." unique_id=239169949 instance=ExtResource("1_77kgm")]
 
 [node name="SpriteMaos" parent="MaoEsquerda" index="0" unique_id=1099965930]
-position = Vector2(60, 51.5)
+visible = true
+position = Vector2(0, 0)
 scale = Vector2(1.8125002, 1.7812501)
-frame_progress = 0.46878904
+animation = &"MaoEsquerda"
 
 [node name="CollisionShape2D" parent="MaoEsquerda" index="1" unique_id=1886918157]
-position = Vector2(61, 52)
+position = Vector2(0, 0)
 
 [node name="MaoDireita" parent="." unique_id=1378191127 instance=ExtResource("1_77kgm")]
 
 [node name="SpriteMaos" parent="MaoDireita" index="0" unique_id=1099965930]
-position = Vector2(58, 285)
+visible = true
+position = Vector2(0, 0)
 scale = Vector2(1.8750001, 1.6874993)
-animation = &"default"
-frame_progress = 0.13747387
 
 [node name="CollisionShape2D" parent="MaoDireita" index="1" unique_id=1886918157]
-position = Vector2(61, 286)
+position = Vector2(0, 0)
 
 [node name="TimerAtaque" type="Timer" parent="." unique_id=625455503]
 
