@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_iniciar_pressed() -> void:
 	print("Iniciar pressionado")
-	get_tree().change_scene_to_file("res://Cenas do jogo/fase1.tscn")
+	get_tree().change_scene_to_file("res://Cenas do jogo/Fase1.tscn")
 
 func _on_sair_pressed() -> void:
 	print("Sair pressionado, jogo fechado!")
