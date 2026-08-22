@@ -14,16 +14,10 @@ const COR_SONHO = Color(0.4, 0.2, 0.7)
 
 
 func _ready():
-	# Entra no grupo que o player usa para avisar "troca de estado agora"
-	# (get_tree().call_group("fase_atual", "alternar_estado")).
-	# Assim qualquer fase nova que entrar nesse grupo já funciona sem mexer no player.
 	add_to_group("fase_atual")
 
 	# Define o estado inicial da fase (começa acordada, na realidade)
 	aplicar_estado(false)
-
-	# Posição inicial do Player
-	#player.position = Vector2(100, 100)
 
 
 func alternar_estado():
@@ -68,6 +62,15 @@ func definir_container_ativo(container: Node2D, ativo: bool):
 func _alternar_colisoes_recursivo(node: Node, ativo: bool):
 	if node is CollisionShape2D or node is CollisionPolygon2D:
 		node.set_deferred("disabled", !ativo)
+	elif node is TileMapLayer:
+		# TileMapLayer (Godot 4.3+): a propriedade "enabled" desliga desenho,
+		# colisão e navegação da camada inteira de uma vez só.
+		node.set_deferred("enabled", ativo)
+	elif node is TileMap:
+		# TileMap antigo, com várias camadas dentro do mesmo nó: desativa
+		# colisão/navegação/desenho camada por camada.
+		for camada in node.get_layers_count():
+			node.set_layer_enabled(camada, ativo)
 
 	for filho in node.get_children():
 		_alternar_colisoes_recursivo(filho, ativo)
