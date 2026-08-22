@@ -2,47 +2,28 @@
 
 [ext_resource type="Texture2D" uid="uid://hei5vk0ljrtt" path="res://Assets/placeholder.png" id="1_6dd5x"]
 [ext_resource type="Script" uid="uid://bc6r06tpnw215" path="res://Scripts/Scripts Cenas/menu_principal.gd" id="1_hfrx1"]
+[ext_resource type="Texture2D" uid="uid://dmu0dftagtgye" path="res://Menus e UI/Assets/BotaoMenu.png" id="3_buyle"]
 [ext_resource type="Texture2D" uid="uid://crou4vmtss17u" path="res://Assets/Logo Parassonia.png" id="3_xgc76"]
+[ext_resource type="Texture2D" uid="uid://baynareyskart" path="res://Menus e UI/Assets/sonho.png" id="4_hvlf2"]
+[ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="5_hvlf2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 texture = ExtResource("1_6dd5x")
 modulate_color = Color(0.48178947, 0.48178947, 0.48178947, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bspta"]
+texture = ExtResource("3_buyle")
+expand_margin_top = 20.0
+expand_margin_bottom = 20.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dd5x"]
-bg_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hgtue"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfrx1"]
-bg_color = Color(0.737193, 0.7371929, 0.7371929, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gp8g6"]
+texture = ExtResource("4_hvlf2")
+expand_margin_top = 20.0
+expand_margin_bottom = 20.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgc76"]
-bg_color = Color(0.43134022, 0.43134025, 0.43134025, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdrsp"]
 
 [node name="Menu_principal" type="Control" unique_id=1831768900]
 layout_mode = 3
@@ -69,10 +50,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -167.75
-offset_top = -75.0
-offset_right = 167.75
-offset_bottom = 192.0
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.00037
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -82,27 +63,106 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.1331962, 0.13319656, 0.13319623, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_g4v7s")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6dd5x")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hfrx1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xgc76")
-text = "Iniciar jogo"
+theme_override_styles/normal = SubResource("StyleBoxTexture_bspta")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hgtue")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gp8g6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gdrsp")
+text = "
+"
+
+[node name="INICIAR" type="RichTextLabel" parent="VBoxContainer/Iniciar" unique_id=148187816]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.93483335, 0.83, 1)
+theme_override_colors/font_outline_color = Color(0.49019608, 0.37254903, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0.3607973, 0.26347807, 0.32020938, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("5_hvlf2")
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "[wave amp=25.0 freq=2.0 connected=1]INICIAR[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sair" type="Button" parent="VBoxContainer" unique_id=2005368966]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.1331962, 0.13319656, 0.13319623, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_g4v7s")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6dd5x")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hfrx1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xgc76")
-text = "Sair
-"
+theme_override_styles/normal = SubResource("StyleBoxTexture_bspta")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hgtue")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gp8g6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gdrsp")
+
+[node name="INICIAR" type="RichTextLabel" parent="VBoxContainer/Sair" unique_id=2113430058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.93483335, 0.83, 1)
+theme_override_colors/font_outline_color = Color(0.49019608, 0.37254903, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0.3607973, 0.26347807, 0.32020938, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("5_hvlf2")
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "[wave amp=25.0 freq=2.0 connected=1]SAIR[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Créditos" type="Button" parent="VBoxContainer" unique_id=560216495]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_bspta")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gp8g6")
+
+[node name="INICIAR" type="RichTextLabel" parent="VBoxContainer/Créditos" unique_id=1733672566]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.93483335, 0.83, 1)
+theme_override_colors/font_outline_color = Color(0.49019608, 0.37254903, 0.4862745, 1)
+theme_override_colors/font_shadow_color = Color(0.3607973, 0.26347807, 0.32020938, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("5_hvlf2")
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "[wave amp=25.0 freq=2.0 connected=1]CRÉDITOS[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LogoParassonia" type="Sprite2D" parent="." unique_id=1198048216]
-position = Vector2(568, 112)
-scale = Vector2(2.162857, 2.458904)
+position = Vector2(630, 137)
+scale = Vector2(4, 4)
 texture = ExtResource("3_xgc76")
 
 [connection signal="pressed" from="VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
