@@ -51,7 +51,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cteab")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"MaoDireita",
 "speed": 5.0
 }, {
 "frames": [{
@@ -68,7 +68,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vnai1")
 }],
 "loop": 1,
-"name": &"new_animation",
+"name": &"MaoEsquerda",
 "speed": 5.0
 }]
 
@@ -81,7 +81,7 @@ script = ExtResource("1_dkuha")
 [node name="SpriteMaos" type="AnimatedSprite2D" parent="." unique_id=1099965930]
 position = Vector2(235, 113)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"new_animation"
+animation = &"MaoDireita"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886918157]
 position = Vector2(40, 28)
