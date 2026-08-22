@@ -16,14 +16,10 @@ texture = ExtResource("3_buyle")
 expand_margin_top = 20.0
 expand_margin_bottom = 20.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hgtue"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gp8g6"]
 texture = ExtResource("4_hvlf2")
 expand_margin_top = 20.0
 expand_margin_bottom = 20.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdrsp"]
 
 [node name="Menu_principal" type="Control" unique_id=1831768900]
 layout_mode = 3
@@ -64,9 +60,9 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.1331962, 0.13319656, 0.13319623, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_bspta")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_hgtue")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gp8g6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_gp8g6")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gdrsp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gp8g6")
 text = "
 "
 
@@ -100,9 +96,9 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.1331962, 0.13319656, 0.13319623, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_bspta")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_hgtue")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gp8g6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_gp8g6")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gdrsp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gp8g6")
 
 [node name="INICIAR" type="RichTextLabel" parent="VBoxContainer/Sair" unique_id=2113430058]
 layout_mode = 1
@@ -134,7 +130,9 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_bspta")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gp8g6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_gp8g6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gp8g6")
 
 [node name="INICIAR" type="RichTextLabel" parent="VBoxContainer/Créditos" unique_id=1733672566]
 layout_mode = 1
