@@ -222,3 +222,8 @@ func morrer() -> void:
 
 	if is_inside_tree() and get_tree():
 		get_tree().reload_current_scene()
+
+func _input(event):
+	if (event.is_action_pressed("Descer")):
+		print("desceu")
+		position.y += 5
