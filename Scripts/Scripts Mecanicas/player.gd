@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 # Parametros de fisica - Mundo Real (Acordada)
-const VELOCIDADE_REAL: float = 165.0
+const VELOCIDADE_REAL: float = 155.0
 const PULO_REAL: float = -590.0
 const MULTIPLICADOR_GRAVIDADE_REAL: float = 1.0
 
 # Parametros de fisica - Ecdise (Mundo dos Sonhos)
-const VELOCIDADE_SONHO: float = 100.0
-const PULO_SONHO: float = -590.0
+const VELOCIDADE_SONHO: float = 97.0
+const PULO_SONHO: float = -575.0
 const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.55
 
 # Parametros de Knockback
