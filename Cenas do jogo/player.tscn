@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://jstausjhbsiw"]
+
+[ext_resource type="Script" uid="uid://eabyr5pan6v8" path="res://Scripts/Scripts Mecanicas/player.gd" id="1_ficc6"]
+[ext_resource type="Texture2D" uid="uid://mb8vi8pmxc8q" path="res://icon.svg" id="2_dndyg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0spx"]
+size = Vector2(116, 117)
+
+[node name="Player" type="CharacterBody2D" unique_id=557778587]
+script = ExtResource("1_ficc6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1092907623]
+position = Vector2(23, 192)
+texture = ExtResource("2_dndyg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1657811113]
+position = Vector2(21, 191.5)
+shape = SubResource("RectangleShape2D_y0spx")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=165528365]
+position = Vector2(593, 317)
+limit_enabled = false
+limit_left = 1
+limit_right = 727379968
+limit_bottom = 650
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
