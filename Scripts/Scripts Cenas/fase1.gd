@@ -3,7 +3,8 @@ extends Node2D
 @onready var objetos_realidade: Node2D = $ObjetosRealidade
 @onready var objetos_sonho: Node2D = $ObjetosSonho
 @onready var ambiente: CanvasModulate = $Ambiente
-@onready var game_over: Control = $GameOver
+@onready var game_over: CanvasLayer = $GameOver
+
 
 var esta_sonhando: bool = false
 var pode_alternar: bool = true

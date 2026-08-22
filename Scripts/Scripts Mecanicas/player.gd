@@ -7,16 +7,10 @@ const VELOCIDADE_REAL: float = 155.0
 const PULO_REAL: float = -590.0
 const MULTIPLICADOR_GRAVIDADE_REAL: float = 1.0
 
-
-
 # Parametros de fisica - Ecdise (Mundo dos Sonhos)
 const VELOCIDADE_SONHO: float = 97.0
 const PULO_SONHO: float = -575.0
 const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.55
-
-# Parametros de Knockback
-const FORCA_KNOCKBACK_X: float = 250.0
-const FORCA_KNOCKBACK_Y: float = -300.0
 
 # Parametros do Sistema de Insonia (0 a 100)
 @export var insonia_maxima: int = 100
@@ -47,15 +41,12 @@ func _ready() -> void:
 		barra_vida.min_value = 0
 		barra_vida.max_value = insonia_maxima
 		_atualizar_interface_ui()
-	
 
 func _physics_process(delta: float) -> void:
-	# Adicionar animação
 	if velocity.x > 1 or velocity.x < -1:
 		SpriteProtagonista.animation = "Walk"
 	else:
 		SpriteProtagonista.animation = "Idle"
-	
 
 	_processar_insonia(delta)
 
@@ -67,12 +58,9 @@ func _physics_process(delta: float) -> void:
 		elif velocity.y < 0:
 			SpriteProtagonista.animation = "Jump"
 
-
-	# Enquanto estiver sofrendo o impulse de knockback, o input do jogador fica bloqueado
 	if not esta_em_knockback:
 		if Input.is_action_just_pressed("Pulo") and is_on_floor():
 			velocity.y = pulo_atual
-
 
 		var direcao = Input.get_axis("Esquerda", "Direita")
 		if direcao:
@@ -101,7 +89,6 @@ func _verificar_colisoes_dano() -> void:
 
 		var causou_dano: bool = false
 
-		# Detecta colisao em TileMapLayer ou TileMap tradicional
 		if colisor is TileMapLayer or colisor is TileMap:
 			var tile_set: TileSet = colisor.tile_set
 			if tile_set and tile_set.has_custom_data_layer_by_name("causa_dano"):
@@ -122,7 +109,6 @@ func _verificar_colisoes_dano() -> void:
 				if tile_data and tile_data.get_custom_data("causa_dano") == true:
 					causou_dano = true
 
-		# Detecta colisao em objetos soltos ou inimigos
 		elif colisor.is_in_group("dano") or colisor.get("causa_dano") == true:
 			causou_dano = true
 
@@ -130,19 +116,15 @@ func _verificar_colisoes_dano() -> void:
 			tomar_dano(33)
 			break
 
-# Incrementa ou decrementa a insonia em intervalos fixos de 0.5 segundos
 func _processar_insonia(delta: float) -> void:
-
 	acumulador_tempo_insonia += delta
 
 	if acumulador_tempo_insonia >= 0.5:
 		acumulador_tempo_insonia -= 0.5
 
 		if esta_sonhando_player:
-			# Na Ecdise, reduz 3 pontos de insonia
 			insonia_atual = clampi(insonia_atual - 3, 0, insonia_maxima)
 		else:
-			# No mundo real, aumenta 1 ponto de insonia
 			insonia_atual = clampi(insonia_atual + 1, 0, insonia_maxima)
 			if insonia_atual >= insonia_maxima:
 				morrer()
@@ -150,8 +132,6 @@ func _processar_insonia(delta: float) -> void:
 		_atualizar_interface_ui()
 
 func _unhandled_input(event: InputEvent) -> void:
-
-
 	if event.is_action_pressed("Mudar estado") and not event.is_echo():
 		get_tree().call_group("fase_atual", "alternar_estado")
 
@@ -166,7 +146,6 @@ func atualizar_modo_sonho(esta_sonhando: bool) -> void:
 		pulo_atual = PULO_REAL
 		multiplicador_gravidade_atual = MULTIPLICADOR_GRAVIDADE_REAL
 
-# Recebe dano inteiro, aplica knockback e preenche a barra de insonia
 func tomar_dano(quantidade: int = 33) -> void:
 	if esta_invencivel:
 		return
@@ -175,33 +154,33 @@ func tomar_dano(quantidade: int = 33) -> void:
 	esta_invencivel = true
 	_atualizar_interface_ui()
 
-	# Aplica knockback no sentido oposto ao que o sprite esta olhando
+	if insonia_atual >= insonia_maxima:
+		morrer()
+		return
+
+	# Aplica knockback
 	var direcao_knockback: float = 1.0 if SpriteProtagonista.flip_h else -1.0
-	velocity.x = direcao_knockback * FORCA_KNOCKBACK_X
-	velocity.y = FORCA_KNOCKBACK_Y
+	velocity.x = direcao_knockback * 250.0
+	velocity.y = -300.0
 	esta_em_knockback = true
 	_encerrar_knockback_apos_tempo(0.2)
 
-	# Se for atingida no mundo dos sonhos, retorna ao mundo real
 	if esta_sonhando_player:
 		get_tree().call_group("fase_atual", "alternar_estado")
 
-	if insonia_atual >= insonia_maxima:
-		game_over()
-	else:
-		# Efeito visual de piscar durante o tempo de invencibilidade (1.5s)
-		var tween = create_tween().set_loops(7)
-		tween.tween_property(self, "modulate:a", 0.2, 0.1)
-		tween.tween_property(self, "modulate:a", 1.0, 0.1)
+	# Pisca o personagem e desativa a invencibilidade apos 1.5s
+	var tween = create_tween().set_loops(7)
+	tween.tween_property(self, "modulate:a", 0.2, 0.1)
+	tween.tween_property(self, "modulate:a", 1.0, 0.1)
 
-		await get_tree().create_timer(1.5).timeout
-
+	await get_tree().create_timer(1.5).timeout
+	esta_invencivel = false
+	modulate.a = 1.0
 
 func _encerrar_knockback_apos_tempo(tempo: float) -> void:
 	await get_tree().create_timer(tempo).timeout
 	esta_em_knockback = false
 
-# Atualiza a interface e faz a transicao visual de cores da barra
 func _atualizar_interface_ui() -> void:
 	if not barra_vida:
 		return
@@ -218,16 +197,17 @@ func _atualizar_interface_ui() -> void:
 		stylebox.bg_color = COR_VERMELHO
 
 	barra_vida.add_theme_stylebox_override("fill", stylebox)
-	
-func game_over():
-	get_tree().change_scene_to_file("res://Menus e UI/game_over.tscn")
 
 func morrer() -> void:
-
+	insonia_atual = insonia_maxima
+	_atualizar_interface_ui()
 	set_physics_process(false)
-	get_node("../GameOver").game_over()
 
-func _input(event):
-	if (event.is_action_pressed("Descer")):
-		print("desceu")
-		position.y += 5
+	# Tenta encontrar o nó GameOver na árvore e ativa a tela
+	var no_game_over = get_tree().get_first_node_in_group("game_over")
+	if no_game_over and no_game_over.has_method("game_over"):
+		no_game_over.game_over()
+	elif has_node("../GameOver"):
+		get_node("../GameOver").game_over()
+	elif has_node("UI/GameOver"):
+		get_node("UI/GameOver").game_over()

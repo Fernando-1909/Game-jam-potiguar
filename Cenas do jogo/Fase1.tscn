@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cyhueexylllgr" path="res://Assets/Tile_casa.png" id="4_7v7xm"]
 [ext_resource type="PackedScene" uid="uid://dp2xf557uwv7u" path="res://Cenas do jogo/boss.tscn" id="5_c43i4"]
 [ext_resource type="PackedScene" uid="uid://ubk8undx4vhj" path="res://Cenas do jogo/gatilho_boss.tscn" id="6_7v7xm"]
+[ext_resource type="PackedScene" uid="uid://dwhmx4fpj74yk" path="res://Menus e UI/game_over.tscn" id="8_r1bcs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ptt1"]
 texture = ExtResource("3_f64ho")
@@ -248,6 +249,9 @@ margem_esquerda_pixels = 40.0
 [node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node") instance=ExtResource("6_7v7xm")]
 position = Vector2(859, 317)
 boss_node = NodePath("../Boss")
+
+[node name="GameOver" parent="." unique_id=2117096851 instance=ExtResource("8_r1bcs")]
+cena_menu_inicial = "uid://rdkrehmrynyj"
 
 [editable path="Boss"]
 [editable path="Boss/MaoEsquerda"]
