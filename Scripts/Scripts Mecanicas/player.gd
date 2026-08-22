@@ -26,7 +26,6 @@ var acumulador_tempo_insonia: float = 0.0
 var esta_sonhando_player: bool = false
 var esta_invencivel: bool = false
 var esta_em_knockback: bool = false
-var esta_morto: bool = false
 
 # Cores para o preenchimento da barra
 const COR_AZUL_BEBE = Color("87CEEB")
@@ -57,8 +56,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		SpriteProtagonista.animation = "Idle"
 	
-	if esta_morto:
-		return
 
 	_processar_insonia(delta)
 
@@ -92,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	_verificar_colisoes_dano()
 
 func _verificar_colisoes_dano() -> void:
-	if esta_invencivel or esta_morto:
+	if esta_invencivel:
 		return
 
 	for i in get_slide_collision_count():
@@ -135,8 +132,6 @@ func _verificar_colisoes_dano() -> void:
 
 # Incrementa ou decrementa a insonia em intervalos fixos de 0.5 segundos
 func _processar_insonia(delta: float) -> void:
-	if esta_morto:
-		return
 
 	acumulador_tempo_insonia += delta
 
@@ -155,8 +150,7 @@ func _processar_insonia(delta: float) -> void:
 		_atualizar_interface_ui()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if esta_morto:
-		return
+
 
 	if event.is_action_pressed("Mudar estado") and not event.is_echo():
 		get_tree().call_group("fase_atual", "alternar_estado")
@@ -174,7 +168,7 @@ func atualizar_modo_sonho(esta_sonhando: bool) -> void:
 
 # Recebe dano inteiro, aplica knockback e preenche a barra de insonia
 func tomar_dano(quantidade: int = 33) -> void:
-	if esta_invencivel or esta_morto:
+	if esta_invencivel:
 		return
 
 	insonia_atual = clampi(insonia_atual + quantidade, 0, insonia_maxima)
@@ -193,7 +187,7 @@ func tomar_dano(quantidade: int = 33) -> void:
 		get_tree().call_group("fase_atual", "alternar_estado")
 
 	if insonia_atual >= insonia_maxima:
-		morrer()
+		game_over()
 	else:
 		# Efeito visual de piscar durante o tempo de invencibilidade (1.5s)
 		var tween = create_tween().set_loops(7)
@@ -202,9 +196,6 @@ func tomar_dano(quantidade: int = 33) -> void:
 
 		await get_tree().create_timer(1.5).timeout
 
-		if not esta_morto:
-			esta_invencivel = false
-			modulate.a = 1.0
 
 func _encerrar_knockback_apos_tempo(tempo: float) -> void:
 	await get_tree().create_timer(tempo).timeout
@@ -227,16 +218,14 @@ func _atualizar_interface_ui() -> void:
 		stylebox.bg_color = COR_VERMELHO
 
 	barra_vida.add_theme_stylebox_override("fill", stylebox)
+	
+func game_over():
+	get_tree().change_scene_to_file("res://Menus e UI/game_over.tscn")
 
 func morrer() -> void:
-	if esta_morto:
-		return
 
-	esta_morto = true
 	set_physics_process(false)
-
-	if is_inside_tree() and get_tree():
-		get_tree().reload_current_scene()
+	get_node("../GameOver").game_over()
 
 func _input(event):
 	if (event.is_action_pressed("Descer")):
