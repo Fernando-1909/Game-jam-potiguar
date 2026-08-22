@@ -7,7 +7,7 @@ const MULTIPLICADOR_GRAVIDADE_REAL: float = 1.0
 
 # Parametros de fisica - Ecdise (Mundo dos Sonhos)
 const VELOCIDADE_SONHO: float = 180.0
-const PULO_SONHO: float = -950.0
+const PULO_SONHO: float = -700.0
 const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.55
 
 # Parametros de Knockback
