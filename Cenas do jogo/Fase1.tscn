@@ -27,6 +27,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7ptt1")
 
 [sub_resource type="TileSet" id="TileSet_f64ho"]
+custom_data_layer_0/name = "causa_dano"
+custom_data_layer_0/type = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gu7o8"]
 texture = ExtResource("3_fytks")
@@ -76,7 +78,8 @@ texture = ExtResource("3_fytks")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.9619427, -1.4798775, 4.613737, -0.9575672, 8, 8, -8, 8)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.1360455, -0.26115417, 4.9619427, -0.78346443, 8, 8, -8, 8)
+2:0/0/custom_data_0 = true
 3:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
@@ -104,6 +107,8 @@ texture = ExtResource("3_fytks")
 
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "causa_dano"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_f64ho")
 
 [node name="Fase1" type="Node2D" unique_id=1038904787]
