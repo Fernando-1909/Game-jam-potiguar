@@ -34,5 +34,4 @@ offset_left = 4.0
 offset_top = 3.0
 offset_right = 236.0
 offset_bottom = 30.0
-max_value = 3.0
-value = 3.0
+step = 1.0

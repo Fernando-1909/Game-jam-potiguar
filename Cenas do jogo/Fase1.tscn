@@ -14,12 +14,16 @@ size = Vector2(48.5, 99)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ptt1"]
 texture = ExtResource("3_f64ho")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
 4:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_rs0my"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7ptt1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gu7o8"]
