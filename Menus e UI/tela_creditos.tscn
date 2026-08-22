@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://bqt1yp35u7jxy"]
+
+[ext_resource type="Texture2D" uid="uid://c5q65ogteaj3i" path="res://Menus e UI/Assets/TelaCréditos.png" id="1_qsyql"]
+[ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="2_fodn2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_brvfx"]
+texture = ExtResource("1_qsyql")
+expand_margin_left = 330.0
+expand_margin_top = 225.0
+expand_margin_right = 330.0
+expand_margin_bottom = 225.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vwvh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ken5f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qryn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kxtq6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_883b8"]
+
+[node name="TelaCreditos" type="Control" unique_id=1636926829]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2024280633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=347166348]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_position = Vector2(-4.93, 0)
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/CenterContainer" unique_id=1424546771]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_brvfx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/PanelContainer" unique_id=135985345]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer" unique_id=616952028]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=1393225199]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Reiniciar" type="Button" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1694432341]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6vwvh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ken5f")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8qryn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kxtq6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_883b8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Reiniciar" unique_id=739121494]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_bottom = -202.215
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.9462307, 0.7703386, 1, 1)
+theme_override_colors/font_outline_color = Color(0.31423163, 0.14538115, 0.3809873, 1)
+theme_override_colors/font_shadow_color = Color(0.15588695, 0.09051717, 0.1838884, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("2_fodn2")
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "CRÉDITOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sair" type="Button" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=408997858]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6vwvh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ken5f")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8qryn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kxtq6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_883b8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Sair" unique_id=1735098860]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.67
+anchor_top = -2.1000001
+anchor_right = 0.5
+anchor_bottom = -1.1
+offset_top = 1.5258789e-05
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.87058824, 0.6509804, 1)
+theme_override_colors/font_outline_color = Color(0.38039216, 0.2901961, 0.14509805, 1)
+theme_override_colors/font_shadow_color = Color(0.21960784, 0.1882353, 0.08627451, 1)
+theme_override_constants/shadow_outline_size = 24
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("2_fodn2")
+theme_override_font_sizes/normal_font_size = 65
+bbcode_enabled = true
+text = "NOME FULANO"
+horizontal_alignment = 1
+vertical_alignment = 1
