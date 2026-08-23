@@ -10,8 +10,8 @@ var nome_animacao: String = ""
 
 @onready var sprite_animado: AnimatedSprite2D = $SpriteMaos if has_node("SpriteMaos") else null
 
-const VELOCIDADE_ATAQUE: float = 700.0
-const VELOCIDADE_RETORNO: float = 450.0
+const VELOCIDADE_ATAQUE: float = 350.0
+const VELOCIDADE_RETORNO: float = 150.0
 
 func _ready() -> void:
 	add_to_group("dano")

@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://jnc6g3rqox1b" path="res://Assets/Imsominia-Walk.png" id="5_oc7wf"]
 [ext_resource type="Texture2D" uid="uid://ca11tgpg2yb0n" path="res://Assets/BarraHP.png" id="6_oc7wf"]
 [ext_resource type="PackedScene" uid="uid://dwhmx4fpj74yk" path="res://Menus e UI/game_over.tscn" id="6_ovpim"]
+[ext_resource type="Texture2D" uid="uid://bydr5sj0ax17o" path="res://Assets/BarraHP1.png" id="7_7pp6d"]
+[ext_resource type="Texture2D" uid="uid://bm0t1s1ntx8bv" path="res://Assets/BarraHP2.png" id="8_7fsmm"]
+[ext_resource type="Texture2D" uid="uid://dmcdboegrjxq2" path="res://Assets/BarraHP3.png" id="9_e52gr"]
+[ext_resource type="Texture2D" uid="uid://dxgtt0urbp6ll" path="res://Assets/BarraHP4.png" id="10_yue4p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ew6xa"]
 atlas = ExtResource("3_ovpim")
@@ -247,6 +251,57 @@ corner_detail = 6
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4v7s"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew6is"]
+atlas = ExtResource("7_7pp6d")
+region = Rect2(0, 0, 45, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fq17"]
+atlas = ExtResource("8_7fsmm")
+region = Rect2(0, 0, 45, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xfr2"]
+atlas = ExtResource("9_e52gr")
+region = Rect2(0, 0, 45, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0ilm"]
+atlas = ExtResource("10_yue4p")
+region = Rect2(0, 0, 45, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yopmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew6is")
+}],
+"loop": 1,
+"name": &"hp1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fq17")
+}],
+"loop": 1,
+"name": &"hp2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xfr2")
+}],
+"loop": 1,
+"name": &"hp3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0ilm")
+}],
+"loop": 1,
+"name": &"hp4",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=557778587]
 z_index = 1
 script = ExtResource("1_ficc6")
@@ -307,7 +362,14 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_g4v7s")
 step = 3.0
 show_percentage = false
 
+[node name="BarraHP" type="AnimatedSprite2D" parent="UI/BarraVida" unique_id=2082704841]
+position = Vector2(81.62501, 6)
+scale = Vector2(5.4388895, 3.75)
+sprite_frames = SubResource("SpriteFrames_yopmv")
+animation = &"hp4"
+
 [node name="MolduraBarra" type="TextureRect" parent="UI" unique_id=896998828]
+visible = false
 texture_filter = 1
 offset_left = -13.0
 offset_top = -1.0
