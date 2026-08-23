@@ -121,7 +121,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1bchd")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Idle",
 "speed": 6.0
 }, {
@@ -138,7 +138,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_136lt")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"TRANSfomado",
 "speed": 7.0
 }, {
@@ -164,7 +164,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5avgy")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"TRANSformando",
 "speed": 7.0
 }, {
@@ -190,7 +190,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ki05x")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"desTRANSfomando",
 "speed": 7.0
 }]
@@ -207,7 +207,7 @@ script = ExtResource("1_nr1io")
 [node name="SpriteInimigo" type="AnimatedSprite2D" parent="." unique_id=1641762141]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"desTRANSfomando"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2020681115]
 position = Vector2(0, 5)
