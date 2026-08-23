@@ -568,8 +568,8 @@ tile_map_data = PackedByteArray("AAAAACwAAwAAAAEAAAABACwAAwAAAAEAAAACACwAAwAAAAE
 tile_set = SubResource("TileSet_yopmv")
 
 [node name="Boss" parent="." unique_id=1364269770 instance=ExtResource("5_c43i4")]
-position = Vector2(1777, 543)
-margem_esquerda_pixels = 40.0
+position = Vector2(1771, 543)
+margem_esquerda_pixels = 34.0
 
 [node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node") instance=ExtResource("6_7v7xm")]
 position = Vector2(1776, 320)

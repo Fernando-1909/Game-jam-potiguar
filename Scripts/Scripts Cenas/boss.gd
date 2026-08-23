@@ -1,9 +1,11 @@
 extends Node2D
 
 @export var velocidade_chase: float = 120.0
-@export var margem_esquerda_pixels: float = 80.0 # Distancia do Boss até a borda esquerda da tela
+@export var margem_esquerda_pixels: float = 80.0 # Distancia do Boss ate a borda esquerda da tela
+@export var tempo_introducao: float = 1.5 # Tempo de pausa/zoom antes de iniciar a perseguicao
 
 var ativo: bool = false
+var perseguindo: bool = false # Controla quando o Boss realmente comeca a andar e atacar
 var mao_esquerda_vez: bool = true
 var player_ref: CharacterBody2D = null
 var y_fixo_chao: float = 0.0 # Trava a altura do Boss para nao subir quando o jogador pular
@@ -38,16 +40,19 @@ func _ready() -> void:
 func iniciar_boss_fight(player: CharacterBody2D) -> void:
 	player_ref = player
 	ativo = true
+	perseguindo = false # O Boss ainda nao se move nem ataca
 
 	# Trava a altura Y no momento da ativacao para ignorar os pulos do jogador
 	y_fixo_chao = player.global_position.y - 40.0
 	
-	# Calcula a metade da tela com base no zoom da camera
-	var metade_largura_tela: float = 576.0 # Valor padrao de seguranca
+	# Calcula a metade da tela com base no zoom final desejado (2.3)
+	var metade_largura_tela: float = 576.0
 	if camera:
-		metade_largura_tela = (get_viewport_rect().size.x / camera.zoom.x) * 0.5
-		# Posiciona a camera exatamente para deixar o Boss colado na borda esquerda
+		metade_largura_tela = (get_viewport_rect().size.x / 2.3) * 0.5
 		camera.position = Vector2(metade_largura_tela - margem_esquerda_pixels, -30.0)
+		
+		# Inicia a camera do Boss no mesmo zoom da camera do Player (6.7) para evitar o salto brusco
+		camera.zoom = Vector2(6.7, 6.7)
 		camera.make_current()
 
 	# Posiciona o Boss na altura fixa do chão e um pouco atrás do jogador
@@ -57,11 +62,21 @@ func iniciar_boss_fight(player: CharacterBody2D) -> void:
 	set_process(true)
 	set_physics_process(true)
 
-	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 0.8)
-
 	if sprite_boss is AnimatedSprite2D:
 		sprite_boss.play()
+
+	# --- ANIMACAO DE INTRODUCAO (FADE IN + ZOOM SUAVE) ---
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(self, "modulate:a", 1.0, tempo_introducao).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	if camera:
+		tween.tween_property(camera, "zoom", Vector2(2.3, 2.3), tempo_introducao).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	# Aguarda a introdução e transição de câmera terminarem
+	await tween.finished
+
+	# --- INÍCIO DA PERSEGUIÇÃO ---
+	perseguindo = true
 
 	if is_instance_valid(mao_esq) and mao_esq.has_method("ativar_mao"):
 		mao_esq.ativar_mao()
@@ -75,8 +90,12 @@ func _process(delta: float) -> void:
 	if not ativo or not is_instance_valid(player_ref):
 		return
 
-	# Mantem a altura Y estritamente travada no chão (ignora pulo do player)
+	# Mantem a altura Y estritamente travada no chão
 	global_position.y = y_fixo_chao
+
+	# So inicia a corrida e acompanhamento se a introducao ja terminou
+	if not perseguindo:
+		return
 
 	# Deslocamento continuo para a direita
 	global_position.x += velocidade_chase * delta
@@ -87,7 +106,7 @@ func _process(delta: float) -> void:
 		global_position.x = lerp(global_position.x, player_ref.global_position.x - limite_distancia, 3.0 * delta)
 
 func _executar_ataque() -> void:
-	if not ativo or not is_instance_valid(player_ref):
+	if not ativo or not perseguindo or not is_instance_valid(player_ref):
 		return
 
 	var alvo = player_ref.global_position
