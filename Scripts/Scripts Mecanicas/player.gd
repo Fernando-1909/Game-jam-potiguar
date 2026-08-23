@@ -197,6 +197,15 @@ func _atualizar_interface_ui() -> void:
 
 	var stylebox = StyleBoxFlat.new()
 
+	# Arredonda os 4 cantos do preenchimento (ajuste o numero para mais/menos arredondado)
+	stylebox.set_corner_radius_all(4)
+
+	# Margens de conteudo (ajuste para alinhar perfeitamente com a moldura)
+	stylebox.content_margin_left = 2.0
+	stylebox.content_margin_top = 2.0
+	stylebox.content_margin_right = 2.0
+	stylebox.content_margin_bottom = 2.0
+
 	if insonia_atual < 40:
 		stylebox.bg_color = COR_AZUL_BEBE
 	elif insonia_atual < 75:
