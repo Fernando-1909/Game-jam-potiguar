@@ -85,6 +85,7 @@ sprite_frames = SubResource("SpriteFrames_g4v7s")
 zoom = Vector2(2.3, 2.3)
 limit_left = 0
 limit_top = -10000001
+limit_right = 3715
 limit_bottom = 9999999
 position_smoothing_enabled = true
 
