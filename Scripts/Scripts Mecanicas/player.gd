@@ -1,16 +1,17 @@
 extends CharacterBody2D
 
 @onready var SpriteProtagonista = $SpriteProtagonista
+@onready var camera: Camera2D = $Camera2D
 
 # Parametros de fisica - Mundo Real (Acordada)
-const VELOCIDADE_REAL: float = 105.0
+const VELOCIDADE_REAL: float = 135.0
 const PULO_REAL: float = -460.0
-const MULTIPLICADOR_GRAVIDADE_REAL: float = 1.0
+const MULTIPLICADOR_GRAVIDADE_REAL: float = 0.63
 
 # Parametros de fisica - Ecdise (Mundo dos Sonhos)
-const VELOCIDADE_SONHO: float = 72.0
-const PULO_SONHO: float = -445.0
-const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.50
+const VELOCIDADE_SONHO: float = 76.0
+const PULO_SONHO: float = -395.0
+const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.40
 
 # Parametros do Sistema de Insonia (0 a 100)
 @export var insonia_maxima: int = 100
@@ -41,6 +42,13 @@ func _ready() -> void:
 		barra_vida.min_value = 0
 		barra_vida.max_value = insonia_maxima
 		_atualizar_interface_ui()
+
+	# Evita que a câmera "deslize" a partir do canto/limite esquerdo do mapa
+	# no início da fase. Sem isso, a suavização (position_smoothing_enabled)
+	# interpola da posição inicial da câmera até o player, e como o limite
+	# esquerdo do mapa é 0, esse deslize fica visível colado na borda.
+	if camera:
+		camera.reset_smoothing()
 
 func _physics_process(delta: float) -> void:
 	if velocity.x > 1 or velocity.x < -1:

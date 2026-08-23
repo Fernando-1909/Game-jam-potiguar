@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://diq8h1nxjivaq"]
+[gd_scene format=4 uid="uid://cpsyby2vt7a7o"]
 
 [ext_resource type="Script" uid="uid://bducurc01ylyl" path="res://Scripts/Scripts Cenas/fase1.gd" id="1_w1ihk"]
 [ext_resource type="PackedScene" uid="uid://jstausjhbsiw" path="res://Cenas do jogo/player.tscn" id="2_w1ihk"]
@@ -216,7 +216,7 @@ script = ExtResource("1_w1ihk")
 position = Vector2(-2, 1)
 
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
-position = Vector2(732, 484)
+position = Vector2(28, 657)
 
 [node name="ObjetosRealidade" type="Node2D" parent="." unique_id=1828136548]
 
@@ -247,10 +247,12 @@ position = Vector2(81, 552)
 margem_esquerda_pixels = 40.0
 
 [node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node") instance=ExtResource("6_7v7xm")]
-position = Vector2(859, 317)
+visible = false
+position = Vector2(927, 317)
 boss_node = NodePath("../Boss")
 
 [node name="GameOver" parent="." unique_id=2117096851 instance=ExtResource("8_r1bcs")]
+visible = false
 cena_menu_inicial = "uid://rdkrehmrynyj"
 
 [editable path="Boss"]
