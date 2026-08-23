@@ -2,33 +2,54 @@
 
 [ext_resource type="PackedScene" uid="uid://bxg23an2dv6c5" path="res://Cenas do jogo/maos_boss.tscn" id="1_77kgm"]
 [ext_resource type="Script" uid="uid://dkdorfl228uvo" path="res://Scripts/Scripts Cenas/boss.gd" id="1_n4y6c"]
-[ext_resource type="Texture2D" uid="uid://mbjixi1vdaap" path="res://Assets/bossSide.png" id="2_n4y6c"]
+[ext_resource type="Texture2D" uid="uid://b2s64l53m5gm5" path="res://Assets/Boss-Run.png" id="3_xy1wo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4y6c"]
+atlas = ExtResource("3_xy1wo")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xy1wo"]
-atlas = ExtResource("2_n4y6c")
-region = Rect2(0, 64, 32, 32)
+atlas = ExtResource("3_xy1wo")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hp7tl"]
-atlas = ExtResource("2_n4y6c")
-region = Rect2(0, 0, 32, 32)
+atlas = ExtResource("3_xy1wo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f34ov"]
+atlas = ExtResource("3_xy1wo")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h28j"]
-atlas = ExtResource("2_n4y6c")
-region = Rect2(0, 32, 32, 32)
+atlas = ExtResource("3_xy1wo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_126p6"]
+atlas = ExtResource("3_xy1wo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nq4k"]
+atlas = ExtResource("3_xy1wo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lan6"]
+atlas = ExtResource("3_xy1wo")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xy1wo")
-}],
-"loop": 1,
-"name": &"Acertado",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_n4y6c")
 }, {
-"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy1wo")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hp7tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f34ov")
 }],
 "loop": 1,
 "name": &"Acerto",
@@ -37,6 +58,15 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4h28j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_126p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nq4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lan6")
 }],
 "loop": 1,
 "name": &"default",
@@ -50,7 +80,6 @@ margem_esquerda_pixels = 30.0
 [node name="SpriteBoss" type="AnimatedSprite2D" parent="." unique_id=1824576613]
 scale = Vector2(3.75, 3)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"Acertado"
 
 [node name="CameraBoss" type="Camera2D" parent="." unique_id=614757028]
 zoom = Vector2(2.3, 2.3)
