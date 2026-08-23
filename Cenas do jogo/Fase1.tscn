@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b0mexwbcwdme" path="res://Assets/Bg1.png" id="13_f3ovh"]
 [ext_resource type="Texture2D" uid="uid://bhuugtgij0smo" path="res://Assets/Bg2.png" id="14_45s1f"]
 [ext_resource type="Texture2D" uid="uid://contijo0ku757" path="res://Assets/Bg3.png" id="15_70htu"]
+[ext_resource type="PackedScene" uid="uid://lhhidedlscji" path="res://Cenas do jogo/tutorial_controles.tscn" id="16_45s1f"]
 [ext_resource type="Texture2D" uid="uid://c3ktjdbi6ii0o" path="res://Assets/Bg4.png" id="16_jxgdp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c43i4"]
@@ -703,6 +704,8 @@ centered = false
 position = Vector2(647, 159)
 texture = ExtResource("16_jxgdp")
 centered = false
+
+[node name="TutorialControles" parent="." unique_id=316437117 instance=ExtResource("16_45s1f")]
 
 [editable path="Boss"]
 [editable path="Boss/MaoEsquerda"]

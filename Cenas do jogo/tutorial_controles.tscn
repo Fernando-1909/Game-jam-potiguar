@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://lhhidedlscji"]
 
+[ext_resource type="Script" uid="uid://be11qvlwk8lna" path="res://Scripts/Scripts Cenas/tutorial_controles.gd" id="1_e6n8u"]
 [ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="1_lij4c"]
 [ext_resource type="Texture2D" uid="uid://c4w8ysipbhjfh" path="res://Assets/A-Seta.png" id="2_jrgri"]
 [ext_resource type="Texture2D" uid="uid://8k4r2wkjbi7j" path="res://Assets/Seta_esquerda-seta.png" id="3_e6n8u"]
@@ -347,15 +348,19 @@ animations = [{
 }]
 
 [node name="TutorialControles" type="CanvasLayer" unique_id=316437117]
+script = ExtResource("1_e6n8u")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1566317424]
+texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -150.0
-offset_right = 150.0
-offset_bottom = 70.0
+offset_left = -250.0
+offset_right = 214.0
+offset_bottom = 110.0
 grow_horizontal = 2
+pivot_offset = Vector2(150, 0)
+pivot_offset_ratio = Vector2(250, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_jrgri")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1666318016]
@@ -370,6 +375,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_lij4c")
+theme_override_font_sizes/font_size = 32
 text = "Mover"
 horizontal_alignment = 1
 
@@ -382,21 +388,25 @@ layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="ControlA" type="Control" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaEsquerda" unique_id=804548775]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="SpriteTeclaA" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaEsquerda/ControlA" unique_id=304010346]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ylgvm")
 
 [node name="ControlSetaEsq" type="Control" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaEsquerda" unique_id=567355221]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="SpriteTeclaSetaEsq" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaEsquerda/ControlSetaEsq" unique_id=786517411]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_m1w0d")
 
 [node name="ColunaDireita" type="VBoxContainer" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=2045660890]
@@ -404,21 +414,25 @@ layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="ControlD" type="Control" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaDireita" unique_id=110753722]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="SpriteTeclaD" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaDireita/ControlD" unique_id=381531838]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rj7i2")
 
 [node name="ControlSetaDir" type="Control" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaDireita" unique_id=1499635942]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="SpriteSetaDir" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaDireita/ControlSetaDir" unique_id=828254197]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_tyvx8")
 
 [node name="GrupoPulo" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=241038414]
@@ -428,17 +442,20 @@ theme_override_constants/separation = 0
 [node name="LabelPulo" type="Label" parent="PanelContainer/HBoxContainer/GrupoPulo" unique_id=1871688920]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lij4c")
+theme_override_font_sizes/font_size = 32
 text = "Pular"
 horizontal_alignment = 1
 
 [node name="ControlW" type="Control" parent="PanelContainer/HBoxContainer/GrupoPulo" unique_id=588700638]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="SpriteTeclaW" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoPulo/ControlW" unique_id=889984834]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 
 [node name="GrupoDescer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1511018925]
@@ -448,25 +465,30 @@ theme_override_constants/separation = 0
 [node name="LabelDescer" type="Label" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=1935011843]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lij4c")
+theme_override_font_sizes/font_size = 32
 text = "Descer"
 horizontal_alignment = 1
 
 [node name="ControlS" type="Control" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=822423169]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="SpriteTeclaS" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoDescer/ControlS" unique_id=1489794383]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_w7tls")
 
 [node name="ControlSetaBaixo" type="Control" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=1946268542]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="SpriteTeclaSetaBaixo" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoDescer/ControlSetaBaixo" unique_id=860132685]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5tp2n")
 
 [node name="GrupoTroca" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=863303830]
@@ -476,23 +498,28 @@ theme_override_constants/separation = 0
 [node name="LabelTroca" type="Label" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1367090723]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_lij4c")
+theme_override_font_sizes/font_size = 32
 text = "Trocar dimensão"
 horizontal_alignment = 1
 
 [node name="ControlJ" type="Control" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1794498812]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="SpriteTeclaJ" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoTroca/ControlJ" unique_id=1794723581]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qy08n")
 
 [node name="ControlZ" type="Control" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=508544496]
-custom_minimum_size = Vector2(32, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="SpriteTeclaZ" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoTroca/ControlZ" unique_id=1714834709]
+texture_filter = 1
 position = Vector2(16, 16)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_spd5u")
