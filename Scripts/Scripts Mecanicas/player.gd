@@ -55,26 +55,14 @@ func _ready() -> void:
 	collision_mask = 1 + 2
 
 func _physics_process(delta: float) -> void:
-	if velocity.x > 1 or velocity.x < -1:
-		SpriteProtagonista.animation = "Walk"
-	else:
-		SpriteProtagonista.animation = "Idle"
-
 	_processar_insonia(delta)
-
-	if not is_on_floor():
-		var gravidade_calculada = gravidade_base * multiplicador_gravidade_atual
-		velocity.y += gravidade_calculada * delta
-		if velocity.y > 0:
-			SpriteProtagonista.animation = "Falling"
-		elif velocity.y < 0:
-			SpriteProtagonista.animation = "Jump"
 
 	if not esta_em_knockback:
 		if Input.is_action_just_pressed("Pulo") and is_on_floor():
 			velocity.y = pulo_atual
 
 		var direcao = Input.get_axis("Esquerda", "Direita")
+
 		if direcao:
 			velocity.x = direcao * velocidade_atual
 		else:
@@ -85,8 +73,27 @@ func _physics_process(delta: float) -> void:
 		elif direcao == -1.0:
 			SpriteProtagonista.flip_h = true
 
+	if not is_on_floor():
+		var gravidade_calculada = gravidade_base * multiplicador_gravidade_atual
+		velocity.y += gravidade_calculada * delta
+
+		if velocity.y > 0:
+			if SpriteProtagonista.animation != "Falling":
+				SpriteProtagonista.play("Falling")
+		elif velocity.y < 0:
+			if SpriteProtagonista.animation != "Jump":
+				SpriteProtagonista.play("Jump")
+	else:
+		if abs(velocity.x) > 1:
+			if SpriteProtagonista.animation != "Walk":
+				SpriteProtagonista.play("Walk")
+		else:
+			if SpriteProtagonista.animation != "Idle":
+				SpriteProtagonista.play("Idle")
+
 	move_and_slide()
 	_verificar_colisoes_dano()
+
 
 func esta_obstruido_na_camada(mascara_camada: int) -> bool:
 	if not colisor_player or not colisor_player.shape:
