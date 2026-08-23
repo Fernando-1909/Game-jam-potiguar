@@ -78,7 +78,10 @@ MENI RAMOS
 ALAN SANTANA
 
 RUSTED MUSIC STUDIO Music & Assets
+ Sarah Cadigan-Fried
+Fontworks Inc. 
 [/wave]"
+scroll_active = false
 horizontal_alignment = 2
 
 [node name="Funçao" type="RichTextLabel" parent="ColorRect/TextureRect" unique_id=2067095807]
@@ -108,4 +111,7 @@ ILUSTRADORA
 ANIMADORA
 ANIMADOR, SOUND DESIGNER
 MUSICA DE BACKGROUND
+FONTE TEXTUAL
+FONTE TEXTUAL
 [/wave]"
+scroll_active = false
