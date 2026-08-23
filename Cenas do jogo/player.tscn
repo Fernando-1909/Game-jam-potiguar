@@ -379,3 +379,5 @@ texture = ExtResource("6_oc7wf")
 
 [node name="GameOver" parent="." unique_id=2117096851 instance=ExtResource("6_ovpim")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1605287162]
