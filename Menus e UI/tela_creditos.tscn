@@ -65,9 +65,19 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 6
 theme_override_constants/outline_size = 15
 theme_override_fonts/normal_font = ExtResource("2_fodn2")
-theme_override_font_sizes/normal_font_size = 65
+theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
 text = "[wave amp=25.0 freq=2.0 connected=1]FENANO MACEDO
+
+JOSÉ INÁCIO
+
+BRUNO EDUARDO
+
+MENI RAMOS
+
+ALAN SANTANA
+
+RUSTED MUSIC STUDIO Music & Assets
 [/wave]"
 horizontal_alignment = 2
 
@@ -86,8 +96,16 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 6
 theme_override_constants/outline_size = 15
 theme_override_fonts/normal_font = ExtResource("2_fodn2")
-theme_override_font_sizes/normal_font_size = 65
+theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
-text = "[wave amp=25.0 freq=3.0 connected=1]VAGABUNDO
-
+text = "[wave amp=25.0 freq=3.0 connected=1]PROGRAADOR
+GAME DESIGNER
+PROGRAMADOR
+GAME DESIGNER
+UI/UX DESIGNER
+PROGRAMADOR
+ILUSTRADORA
+ANIMADORA
+ANIMADOR, SOUND DESIGNER
+MUSICA DE BACKGROUND
 [/wave]"
