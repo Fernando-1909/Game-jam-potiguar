@@ -245,7 +245,7 @@ script = ExtResource("1_ficc6")
 
 [node name="SpriteProtagonista" type="AnimatedSprite2D" parent="." unique_id=1588295951]
 sprite_frames = SubResource("SpriteFrames_rs0my")
-animation = &"Walk"
+animation = &"Falling"
 autoplay = "Idle"
 flip_h = true
 
@@ -279,6 +279,22 @@ offset_top = -1.0
 offset_right = 253.0
 offset_bottom = 41.0
 texture = ExtResource("6_oc7wf")
+
+[node name="MensagemAviso" type="Label" parent="UI" unique_id=165126837]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -11.5
+offset_right = 80.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dimensão obstruída!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameOver" parent="." unique_id=2117096851 instance=ExtResource("6_ovpim")]
 visible = false

@@ -29,12 +29,16 @@ const COR_VERMELHO = Color("FF4D6D")
 
 # Referencias de nos
 @onready var barra_vida: ProgressBar = $UI/BarraVida
+@onready var mensagem_aviso: Label = $UI/MensagemAviso
+@onready var colisor_player: CollisionShape2D = $CollisionShape2D
 
 # Variaveis ativas de controle de fisica
 var velocidade_atual: float = VELOCIDADE_REAL
 var pulo_atual: float = PULO_REAL
 var multiplicador_gravidade_atual: float = MULTIPLICADOR_GRAVIDADE_REAL
 var gravidade_base: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var tween_aviso: Tween
 
 func _ready() -> void:
 	insonia_atual = 0
@@ -43,22 +47,17 @@ func _ready() -> void:
 		barra_vida.max_value = insonia_maxima
 		_atualizar_interface_ui()
 
-	print("PLAYER GLOBAL: ", global_position)
-	print("CAMERA GLOBAL: ", camera.global_position)
-
-	# Evita que a câmera "deslize" a partir do canto/limite esquerdo do mapa
-	# no início da fase. Sem isso, a suavização (position_smoothing_enabled)
-	# interpola da posição inicial da câmera até o player, e como o limite
-	# esquerdo do mapa é 0, esse deslize fica visível colado na borda.
 	if camera:
 		camera.reset_smoothing()
+		
+	# Define a mascara de colisao inicial (Layer 1 + Layer 2)
+	collision_mask = 1 + 2
 
 func _physics_process(delta: float) -> void:
 	if velocity.x > 1 or velocity.x < -1:
 		SpriteProtagonista.animation = "Walk"
 	else:
 		SpriteProtagonista.animation = "Idle"
-	
 
 	_processar_insonia(delta)
 
@@ -87,6 +86,38 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_verificar_colisoes_dano()
+
+func esta_obstruido_na_camada(mascara_camada: int) -> bool:
+	if not colisor_player or not colisor_player.shape:
+		return false
+
+	var query = PhysicsShapeQueryParameters2D.new()
+	query.shape = colisor_player.shape
+	query.transform = global_transform
+	query.collision_mask = mascara_camada
+	query.exclude = [get_rid()]
+
+	var espaco_fisica = get_world_2d().direct_space_state
+	var colisoes = espaco_fisica.intersect_shape(query, 1)
+
+	return colisoes.size() > 0
+
+func exibir_aviso_obstrucao(texto: String = "Dimensão Obstruída!") -> void:
+	if not mensagem_aviso:
+		return
+
+	mensagem_aviso.text = texto
+	mensagem_aviso.visible = true
+	mensagem_aviso.modulate.a = 1.0
+
+	if tween_aviso and tween_aviso.is_running():
+		tween_aviso.kill()
+
+	tween_aviso = create_tween()
+	tween_aviso.tween_interval(0.6)
+	tween_aviso.tween_property(mensagem_aviso, "modulate:a", 0.0, 0.4)
+	await tween_aviso.finished
+	mensagem_aviso.visible = false
 
 func _verificar_colisoes_dano() -> void:
 	if esta_invencivel:
@@ -153,10 +184,14 @@ func atualizar_modo_sonho(esta_sonhando: bool) -> void:
 		velocidade_atual = VELOCIDADE_SONHO
 		pulo_atual = PULO_SONHO
 		multiplicador_gravidade_atual = MULTIPLICADOR_GRAVIDADE_SONHO
+		# Colide com Layer 1 (chao base) + Layer 3 (Mundo dos Sonhos)
+		collision_mask = 1 + 4
 	else:
 		velocidade_atual = VELOCIDADE_REAL
 		pulo_atual = PULO_REAL
 		multiplicador_gravidade_atual = MULTIPLICADOR_GRAVIDADE_REAL
+		# Colide com Layer 1 (chao base) + Layer 2 (Mundo Real)
+		collision_mask = 1 + 2
 
 func tomar_dano(quantidade: int = 33) -> void:
 	if esta_invencivel:
@@ -170,7 +205,6 @@ func tomar_dano(quantidade: int = 33) -> void:
 		morrer()
 		return
 
-	# Aplica knockback
 	var direcao_knockback: float = 1.0 if SpriteProtagonista.flip_h else -1.0
 	velocity.x = direcao_knockback * 250.0
 	velocity.y = -300.0
@@ -180,7 +214,6 @@ func tomar_dano(quantidade: int = 33) -> void:
 	if esta_sonhando_player:
 		get_tree().call_group("fase_atual", "alternar_estado")
 
-	# Pisca o personagem e desativa a invencibilidade apos 1.5s
 	var tween = create_tween().set_loops(7)
 	tween.tween_property(self, "modulate:a", 0.2, 0.1)
 	tween.tween_property(self, "modulate:a", 1.0, 0.1)
@@ -200,11 +233,7 @@ func _atualizar_interface_ui() -> void:
 	barra_vida.value = insonia_atual
 
 	var stylebox = StyleBoxFlat.new()
-
-	# Arredonda os 4 cantos do preenchimento (ajuste o numero para mais/menos arredondado)
 	stylebox.set_corner_radius_all(4)
-
-	# Margens de conteudo (ajuste para alinhar perfeitamente com a moldura)
 	stylebox.content_margin_left = 2.0
 	stylebox.content_margin_top = 2.0
 	stylebox.content_margin_right = 2.0
@@ -224,7 +253,6 @@ func morrer() -> void:
 	_atualizar_interface_ui()
 	set_physics_process(false)
 
-	# Tenta encontrar o nó GameOver na árvore e ativa a tela
 	var no_game_over = get_tree().get_first_node_in_group("game_over")
 	if no_game_over and no_game_over.has_method("game_over"):
 		no_game_over.game_over()

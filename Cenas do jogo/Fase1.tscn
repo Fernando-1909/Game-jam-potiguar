@@ -217,7 +217,7 @@ texture = ExtResource("4_7v7xm")
 14:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_rs0my"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_7ptt1")
 sources/3 = SubResource("TileSetAtlasSource_4jn5r")
 sources/4 = SubResource("TileSetAtlasSource_wf4bf")
@@ -225,6 +225,7 @@ sources/5 = SubResource("TileSetAtlasSource_7mfhq")
 sources/6 = SubResource("TileSetAtlasSource_blfro")
 
 [sub_resource type="TileSet" id="TileSet_f64ho"]
+physics_layer_0/collision_layer = 2
 custom_data_layer_0/name = "causa_dano"
 custom_data_layer_0/type = 1
 
@@ -285,7 +286,7 @@ texture = ExtResource("3_fytks")
 7:1/0/physics_layer_0/polygon_0/one_way = true
 
 [sub_resource type="TileSet" id="TileSet_w1ihk"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4
 sources/0 = SubResource("TileSetAtlasSource_gu7o8")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f64ho"]
@@ -303,7 +304,7 @@ texture = ExtResource("3_fytks")
 4:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_g4v7s"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4
 custom_data_layer_0/name = "causa_dano"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_f64ho")
@@ -580,7 +581,7 @@ visible = false
 cena_menu_inicial = "uid://rdkrehmrynyj"
 
 [node name="Inimigos" parent="." unique_id=1853603523 instance=ExtResource("6_73fxv")]
-position = Vector2(1056, 624)
+position = Vector2(217, 656)
 
 [node name="BgQuarto" type="Sprite2D" parent="." unique_id=1053085816]
 z_index = -1
