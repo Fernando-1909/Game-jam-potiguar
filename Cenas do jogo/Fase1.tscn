@@ -540,7 +540,7 @@ script = ExtResource("1_w1ihk")
 position = Vector2(-2, 1)
 
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
-position = Vector2(28, 648)
+position = Vector2(1734, 639)
 
 [node name="ObjetosRealidade" type="Node2D" parent="." unique_id=1828136548]
 
@@ -567,7 +567,6 @@ tile_map_data = PackedByteArray("AAAAACwAAwAAAAEAAAABACwAAwAAAAEAAAACACwAAwAAAAE
 tile_set = SubResource("TileSet_yopmv")
 
 [node name="Boss" parent="." unique_id=1364269770 instance=ExtResource("5_c43i4")]
-visible = false
 position = Vector2(81, 552)
 margem_esquerda_pixels = 40.0
 
