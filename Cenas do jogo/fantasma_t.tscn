@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dudk5gj44nnih" path="res://Scripts/Scripts Cenas/Inimigo.gd" id="1_nr1io"]
 [ext_resource type="Texture2D" uid="uid://fa4ju6ye7ooi" path="res://Assets/Fantasma-Idle.png" id="1_ra6r1"]
 [ext_resource type="Texture2D" uid="uid://cvy0g645wic16" path="res://Assets/Fantasma-Trans.png" id="2_nr1io"]
+[ext_resource type="Texture2D" uid="uid://bfs8qr5h4ckyi" path="res://Assets/fantasma-Trans-Idle.png" id="3_te0rj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf4bf"]
 atlas = ExtResource("1_ra6r1")
@@ -28,16 +29,36 @@ region = Rect2(128, 0, 32, 32)
 atlas = ExtResource("1_ra6r1")
 region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nr1io"]
-atlas = ExtResource("2_nr1io")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_te0rj"]
-atlas = ExtResource("2_nr1io")
-region = Rect2(288, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8q1da"]
-atlas = ExtResource("2_nr1io")
+atlas = ExtResource("3_te0rj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfp14"]
+atlas = ExtResource("3_te0rj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ksg1"]
+atlas = ExtResource("3_te0rj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3sjp"]
+atlas = ExtResource("3_te0rj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtjjw"]
+atlas = ExtResource("3_te0rj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixfdd"]
+atlas = ExtResource("3_te0rj")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2seup"]
+atlas = ExtResource("3_te0rj")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0txd"]
+atlas = ExtResource("3_te0rj")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53u5n"]
@@ -67,6 +88,14 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5avgy"]
 atlas = ExtResource("2_nr1io")
 region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te0rj"]
+atlas = ExtResource("2_nr1io")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x51s8"]
+atlas = ExtResource("2_nr1io")
+region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15bfc"]
 atlas = ExtResource("2_nr1io")
@@ -123,17 +152,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nr1io")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_te0rj")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8q1da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfp14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ksg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3sjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtjjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixfdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2seup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0txd")
 }],
 "loop": 1,
 "name": &"TRANSfomado",
-"speed": 3.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -156,6 +200,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5avgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te0rj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x51s8")
 }],
 "loop": 0,
 "name": &"TRANSformando",
@@ -200,8 +250,9 @@ script = ExtResource("1_nr1io")
 [node name="SpriteInimigo" type="AnimatedSprite2D" parent="." unique_id=1641762141]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"TRANSfomado"
-frame_progress = 0.42631537
+animation = &"TRANSformando"
+frame = 8
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2020681115]
 position = Vector2(0, 5)
