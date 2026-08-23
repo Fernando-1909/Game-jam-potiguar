@@ -307,7 +307,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=557778587]
 z_index = 1
 script = ExtResource("1_ficc6")
-cura_insonia_sonho = 1.3
+cura_insonia_sonho = 18.0
 
 [node name="SpriteProtagonista" type="AnimatedSprite2D" parent="." unique_id=1588295951]
 sprite_frames = SubResource("SpriteFrames_rs0my")

@@ -17,19 +17,19 @@ const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.40
 
 # Parametros do Sistema de Insonia (0 a 100)
 @export var insonia_maxima: float = 100.0
-@export var ganho_insonia_real: float = 1.5   # Pontos de insônia que ganha POR SEGUNDO acordada (diminua para ficar mais lento)
-@export var cura_insonia_sonho: float = 2.0    # Pontos de insônia que cura POR SEGUNDO no sonho
-@export var velocidade_suavizacao_barra: float = 10.0 # Velocidade com que a barra visual desliza
+@export var ganho_insonia_real: float = 0.8   # Subida bem cadenciada quando acordada
+@export var cura_insonia_sonho: float = 45.0  # CURA RÁPIDA: Esvazia 100% da barra em cerca de 2 segundos!
+@export var velocidade_suavizacao_barra: float = 120.0 # UI ultra responsiva sem travamentos
 
-var insonia_atual: float = 0.0  # CORRIGIDO: mudado para float
+var insonia_atual: float = 0.0
 var esta_sonhando_player: bool = false
 var esta_invencivel: bool = false
 var esta_em_knockback: bool = false
 
-# Cores para o preenchimento da barra
-const COR_AZUL_BEBE = Color("87CEEB")
-const COR_LILAS = Color("C77DFF")
-const COR_VERMELHO = Color("FF4D6D")
+# Cores vibrantes/neon para máxima visibilidade na interface
+const COR_AZUL_NEON = Color("00e5f3ff")  # Ciano Elétrico vibrante
+const COR_LILAS_NEON = Color("74009eff") # Roxo/Lilás de alto contraste
+const COR_VERMELHO_VIVO = Color("bc0023ff") # Vermelho Alerta Intenso
 
 # Referencias de nos da UI e Colisao
 @onready var barra_vida: ProgressBar = $UI/BarraVida
@@ -176,12 +176,12 @@ func _verificar_colisoes_dano() -> void:
 			causou_dano = true
 
 		if causou_dano:
-			sfx_dano.play()
+			if sfx_dano:
+				sfx_dano.play()
 			tomar_dano(33)
 			break
 
 func _processar_insonia(delta: float) -> void:
-	# Incremento contínuo e suave baseado no delta
 	if esta_sonhando_player:
 		insonia_atual = clampf(insonia_atual - (cura_insonia_sonho * delta), 0.0, insonia_maxima)
 	else:
@@ -246,7 +246,7 @@ func _atualizar_interface_ui(delta: float = 0.016) -> void:
 	if not barra_vida:
 		return
 
-	# Interpola o valor da barra visual para deslizar suavemente até o valor atual
+	# Acompanha a redução ultrarrápida da barra visual sem atrasos
 	barra_vida.value = move_toward(barra_vida.value, insonia_atual, velocidade_suavizacao_barra * delta * 10.0)
 
 	_atualizar_estilo_barra()
@@ -271,12 +271,13 @@ func _atualizar_estilo_barra() -> void:
 	stylebox.content_margin_right = 2.0
 	stylebox.content_margin_bottom = 2.0
 
+	# Aplica as cores mais vibrantes
 	if insonia_atual < 40:
-		stylebox.bg_color = COR_AZUL_BEBE
+		stylebox.bg_color = COR_AZUL_NEON
 	elif insonia_atual < 75:
-		stylebox.bg_color = COR_LILAS
+		stylebox.bg_color = COR_LILAS_NEON
 	else:
-		stylebox.bg_color = COR_VERMELHO
+		stylebox.bg_color = COR_VERMELHO_VIVO
 
 	barra_vida.add_theme_stylebox_override("fill", stylebox)
 
@@ -286,7 +287,7 @@ func _descer_plataforma() -> void:
 
 	global_position.y += 8.0
 	velocity.y = 50.0
-	
+
 func morrer() -> void:
 	insonia_atual = insonia_maxima
 	_atualizar_interface_ui()
