@@ -616,7 +616,7 @@ script = ExtResource("1_w1ihk")
 position = Vector2(-2, 1)
 
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
-position = Vector2(2891, 629)
+position = Vector2(2295, 616)
 ganho_insonia_real = 2.0
 cura_insonia_sonho = 1.0
 
@@ -676,6 +676,8 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(640, 360)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer" unique_id=1128574111]
+position = Vector2(201.5, 94)
+scale = Vector2(1.6296875, 1.5222223)
 texture = ExtResource("13_f3ovh")
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1402558056]
