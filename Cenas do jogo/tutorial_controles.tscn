@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://lhhidedlscji"]
+
+[ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="1_lij4c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+
+[node name="TutorialControles" type="CanvasLayer" unique_id=316437117]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1566317424]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1666318016]
+layout_mode = 2
+
+[node name="GrupoMovimento" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1680252114]
+layout_mode = 2
+
+[node name="TeclasMovimento" type="HBoxContainer" parent="PanelContainer/HBoxContainer/GrupoMovimento" unique_id=538975920]
+layout_mode = 2
+
+[node name="SpriteTeclaA" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=304010346]
+
+[node name="SpriteTeclaSetaEsq" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=786517411]
+
+[node name="SpriteTeclaD" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=381531838]
+
+[node name="SpriteSetaDir" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=828254197]
+
+[node name="LabelMovimento" type="Label" parent="PanelContainer/HBoxContainer/GrupoMovimento" unique_id=1434466501]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lij4c")
+text = "Mover
+"
+
+[node name="GrupoPulo" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=241038414]
+layout_mode = 2
+
+[node name="SpriteTeclaW" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoPulo" unique_id=889984834]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+
+[node name="LabelPulo" type="Label" parent="PanelContainer/HBoxContainer/GrupoPulo" unique_id=1871688920]
+layout_mode = 2
+text = "Pular
+"
+
+[node name="GrupoDescer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1511018925]
+layout_mode = 2
+
+[node name="SpriteTeclaS" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=1489794383]
+
+[node name="SpriteTeclaSetaBaixo" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=860132685]
+
+[node name="LabelDescer" type="Label" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=1935011843]
+layout_mode = 2
+text = "Descer
+"
+
+[node name="GrupoTroca" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=863303830]
+layout_mode = 2
+
+[node name="SpriteTeclaJ" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1794723581]
+
+[node name="SpriteTeclaZ" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1714834709]
+
+[node name="LabelTroca" type="Label" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1367090723]
+layout_mode = 2
+text = "Trocar dimensão"

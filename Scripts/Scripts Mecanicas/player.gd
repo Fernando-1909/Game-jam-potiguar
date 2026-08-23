@@ -15,8 +15,10 @@ const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.40
 
 # Parametros do Sistema de Insonia (0 a 100)
 @export var insonia_maxima: int = 100
-var insonia_atual: int = 0
+@export var ganho_insonia_real: float = 2   # Aumentado (antes era 1)
+@export var cura_insonia_sonho: float = 1   # Diminuido (antes era 3)
 
+var insonia_atual: int = 0
 var acumulador_tempo_insonia: float = 0.0
 var esta_sonhando_player: bool = false
 var esta_invencivel: bool = false
@@ -56,14 +58,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_processar_insonia(delta)
-	
 
 	if not esta_em_knockback:
 		if Input.is_action_just_pressed("Descer") and is_on_floor():
 			_descer_plataforma()
 		elif Input.is_action_just_pressed("Pulo") and is_on_floor():
 			velocity.y = pulo_atual
-
 
 		var direcao = Input.get_axis("Esquerda", "Direita")
 
@@ -97,7 +97,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_verificar_colisoes_dano()
-
 
 func esta_obstruido_na_camada(mascara_camada: int) -> bool:
 	if not colisor_player or not colisor_player.shape:
@@ -183,9 +182,9 @@ func _processar_insonia(delta: float) -> void:
 		acumulador_tempo_insonia -= 0.5
 
 		if esta_sonhando_player:
-			insonia_atual = clampi(insonia_atual - 3, 0, insonia_maxima)
+			insonia_atual = clampi(insonia_atual - cura_insonia_sonho, 0, insonia_maxima)
 		else:
-			insonia_atual = clampi(insonia_atual + 1, 0, insonia_maxima)
+			insonia_atual = clampi(insonia_atual + ganho_insonia_real, 0, insonia_maxima)
 			if insonia_atual >= insonia_maxima:
 				morrer()
 
@@ -213,6 +212,8 @@ func atualizar_modo_sonho(esta_sonhando: bool) -> void:
 func tomar_dano(quantidade: int = 33) -> void:
 	if esta_invencivel:
 		return
+
+	get_tree().call_group("boss", "tocar_animacao_acerto")
 
 	insonia_atual = clampi(insonia_atual + quantidade, 0, insonia_maxima)
 	esta_invencivel = true
@@ -269,12 +270,8 @@ func _descer_plataforma() -> void:
 	if not is_on_floor():
 		return
 
-	# Move o player para baixo da superficie da plataforma One Way
 	global_position.y += 8.0
-
-	# Garante que ele continue caindo
 	velocity.y = 50.0
-
 
 func morrer() -> void:
 	insonia_atual = insonia_maxima
