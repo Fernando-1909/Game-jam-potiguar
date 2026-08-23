@@ -23,15 +23,14 @@ func alternar_estado():
 
 	var jogador = get_node_or_null("Player")
 	
-	# Verifica se a posicao atual no mundo oposto esta obstruida por blocos
 	if jogador and jogador.has_method("esta_obstruido_na_camada"):
-		# Se estamos na Realidade (!esta_sonhando), o destino e o Sonho (Layer 3 -> valor de mascara = 4)
-		# Se estamos no Sonho (esta_sonhando), o destino e a Realidade (Layer 2 -> valor de mascara = 2)
+		# Layer 3 (Mundo dos Sonhos) -> valor da mascara = 4
+		# Layer 2 (Mundo Real)       -> valor da mascara = 2
 		var mascara_destino = 4 if not esta_sonhando else 2
 		
 		if jogador.esta_obstruido_na_camada(mascara_destino):
 			if jogador.has_method("exibir_aviso_obstrucao"):
-				jogador.exibir_aviso_obstrucao("Dimensão Obstruída!")
+				jogador.exibir_aviso_obstrucao("Caminho bloqueado na outra dimensão!")
 			return
 
 	esta_sonhando = !esta_sonhando
@@ -43,18 +42,15 @@ func alternar_estado():
 	pode_alternar = true
 
 func aplicar_estado(animado: bool = true):
-	# Alterna visibilidade visual
 	if is_instance_valid(objetos_realidade):
 		objetos_realidade.visible = !esta_sonhando
 	if is_instance_valid(objetos_sonho):
 		objetos_sonho.visible = esta_sonhando
 
-	# Atualiza a mascara de colisao e fisica no script player.gd
 	var jogador = get_node_or_null("Player")
 	if jogador and jogador.has_method("atualizar_modo_sonho"):
 		jogador.atualizar_modo_sonho(esta_sonhando)
 
-	# Transicao da cor do ambiente
 	var cor_alvo = COR_SONHO if esta_sonhando else COR_REALIDADE
 
 	if animado:

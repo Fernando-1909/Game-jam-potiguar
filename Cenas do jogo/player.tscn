@@ -237,6 +237,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0spx"]
 size = Vector2(13, 14)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0, 0, 0, 0.7058824)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4v7s"]
 
 [node name="Player" type="CharacterBody2D" unique_id=557778587]
@@ -263,6 +271,31 @@ limit_smoothed = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2137384157]
 
+[node name="ContainerAviso" type="PanelContainer" parent="UI" unique_id=368756177]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.5
+offset_top = 100.0
+offset_right = 80.5
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/ContainerAviso" unique_id=126001225]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="MensagemAviso" type="Label" parent="UI/ContainerAviso/MarginContainer" unique_id=165126837]
+layout_mode = 2
+text = "Espaço ocupado na outra dimensão!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BarraVida" type="ProgressBar" parent="UI" unique_id=903928311]
 offset_left = 41.0
 offset_top = 8.0
@@ -279,22 +312,6 @@ offset_top = -1.0
 offset_right = 253.0
 offset_bottom = 41.0
 texture = ExtResource("6_oc7wf")
-
-[node name="MensagemAviso" type="Label" parent="UI" unique_id=165126837]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.5
-offset_top = -11.5
-offset_right = 80.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Dimensão obstruída!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="GameOver" parent="." unique_id=2117096851 instance=ExtResource("6_ovpim")]
 visible = false
