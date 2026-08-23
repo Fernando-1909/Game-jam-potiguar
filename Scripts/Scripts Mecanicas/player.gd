@@ -43,6 +43,9 @@ func _ready() -> void:
 		barra_vida.max_value = insonia_maxima
 		_atualizar_interface_ui()
 
+	print("PLAYER GLOBAL: ", global_position)
+	print("CAMERA GLOBAL: ", camera.global_position)
+
 	# Evita que a câmera "deslize" a partir do canto/limite esquerdo do mapa
 	# no início da fase. Sem isso, a suavização (position_smoothing_enabled)
 	# interpola da posição inicial da câmera até o player, e como o limite
@@ -55,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		SpriteProtagonista.animation = "Walk"
 	else:
 		SpriteProtagonista.animation = "Idle"
+	
 
 	_processar_insonia(delta)
 

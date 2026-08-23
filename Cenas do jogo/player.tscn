@@ -260,7 +260,6 @@ limit_top = -987
 limit_right = 19023
 limit_bottom = 720
 limit_smoothed = true
-position_smoothing_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2137384157]
 
