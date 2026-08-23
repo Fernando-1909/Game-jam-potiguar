@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://contijo0ku757" path="res://Assets/Bg3.png" id="15_70htu"]
 [ext_resource type="PackedScene" uid="uid://lhhidedlscji" path="res://Cenas do jogo/tutorial_controles.tscn" id="16_45s1f"]
 [ext_resource type="Texture2D" uid="uid://c3ktjdbi6ii0o" path="res://Assets/Bg4.png" id="16_jxgdp"]
+[ext_resource type="PackedScene" uid="uid://cwx01vyslvke6" path="res://Cenas do jogo/gatilho_final.tscn" id="17_70htu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c43i4"]
 texture = ExtResource("3_f64ho")
@@ -706,6 +707,10 @@ texture = ExtResource("16_jxgdp")
 centered = false
 
 [node name="TutorialControles" parent="." unique_id=316437117 instance=ExtResource("16_45s1f")]
+
+[node name="GatilhoFinal" parent="." unique_id=428391971 instance=ExtResource("17_70htu")]
+position = Vector2(3686, 171)
+cena_final = "uid://csin876vb7jn8"
 
 [editable path="Boss"]
 [editable path="Boss/MaoEsquerda"]

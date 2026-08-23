@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cwx01vyslvke6"]
+
+[ext_resource type="Script" uid="uid://cn1i10wwe341a" path="res://Scripts/gatilho_final.gd" id="1_r4l3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(81, 525)
+
+[node name="GatilhoFinal" type="Area2D" unique_id=428391971]
+script = ExtResource("1_r4l3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1388987046]
+position = Vector2(47, 256)
+shape = SubResource("RectangleShape2D_g4v7s")
