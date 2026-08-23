@@ -1,77 +1,498 @@
 [gd_scene format=3 uid="uid://lhhidedlscji"]
 
 [ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="1_lij4c"]
+[ext_resource type="Texture2D" uid="uid://c4w8ysipbhjfh" path="res://Assets/A-Seta.png" id="2_jrgri"]
+[ext_resource type="Texture2D" uid="uid://8k4r2wkjbi7j" path="res://Assets/Seta_esquerda-seta.png" id="3_e6n8u"]
+[ext_resource type="Texture2D" uid="uid://isjygevx4pox" path="res://Assets/D-Seta.png" id="4_yb3pq"]
+[ext_resource type="Texture2D" uid="uid://bix5aiygqkvjy" path="res://Assets/Seta_direita-Seta.png" id="5_nahue"]
+[ext_resource type="Texture2D" uid="uid://b16xhan0a5mxg" path="res://Assets/W-Seta.png" id="6_2br2y"]
+[ext_resource type="Texture2D" uid="uid://ys0x2smkuhfn" path="res://Assets/S-Seta.png" id="7_n2g17"]
+[ext_resource type="Texture2D" uid="uid://whf3gjvafra2" path="res://Assets/Seta_baixo-Seta.png" id="8_wi2gq"]
+[ext_resource type="Texture2D" uid="uid://clfx07chdngu5" path="res://Assets/J-Seta.png" id="9_vihkx"]
+[ext_resource type="Texture2D" uid="uid://kkfbq1avg6i" path="res://Assets/Z-Seta.png" id="10_vd10n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrgri"]
+bg_color = Color(0, 0, 0, 0.47058824)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt4y3"]
+atlas = ExtResource("2_jrgri")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08d3"]
+atlas = ExtResource("2_jrgri")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1glb"]
+atlas = ExtResource("2_jrgri")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an8sy"]
+atlas = ExtResource("2_jrgri")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylgvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt4y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s08d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1glb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an8sy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fa16"]
+atlas = ExtResource("3_e6n8u")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr5oj"]
+atlas = ExtResource("3_e6n8u")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lctpb"]
+atlas = ExtResource("3_e6n8u")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm1md"]
+atlas = ExtResource("3_e6n8u")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1w0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fa16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr5oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lctpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm1md")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88vd0"]
+atlas = ExtResource("4_yb3pq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0f5v"]
+atlas = ExtResource("4_yb3pq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jerfm"]
+atlas = ExtResource("4_yb3pq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl7xm"]
+atlas = ExtResource("4_yb3pq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rj7i2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88vd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0f5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jerfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl7xm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avuh0"]
+atlas = ExtResource("5_nahue")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4pdg"]
+atlas = ExtResource("5_nahue")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yga15"]
+atlas = ExtResource("5_nahue")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo5uh"]
+atlas = ExtResource("5_nahue")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tyvx8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avuh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4pdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yga15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo5uh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdm5v"]
+atlas = ExtResource("6_2br2y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r1ii"]
+atlas = ExtResource("6_2br2y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f04qy"]
+atlas = ExtResource("6_2br2y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kof17"]
+atlas = ExtResource("6_2br2y")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdm5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r1ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f04qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kof17")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r84b5"]
+atlas = ExtResource("7_n2g17")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpc06"]
+atlas = ExtResource("7_n2g17")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jnou"]
+atlas = ExtResource("7_n2g17")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljwqq"]
+atlas = ExtResource("7_n2g17")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7tls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r84b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpc06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jnou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljwqq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm4qy"]
+atlas = ExtResource("8_wi2gq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvoyh"]
+atlas = ExtResource("8_wi2gq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prear"]
+atlas = ExtResource("8_wi2gq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki1pn"]
+atlas = ExtResource("8_wi2gq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tp2n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm4qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvoyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prear")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki1pn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouxjb"]
+atlas = ExtResource("9_vihkx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjjh8"]
+atlas = ExtResource("9_vihkx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poe0n"]
+atlas = ExtResource("9_vihkx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1meg"]
+atlas = ExtResource("9_vihkx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qy08n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouxjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjjh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poe0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1meg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8s7u"]
+atlas = ExtResource("10_vd10n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl5dv"]
+atlas = ExtResource("10_vd10n")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqqmf"]
+atlas = ExtResource("10_vd10n")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldlh1"]
+atlas = ExtResource("10_vd10n")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spd5u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8s7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl5dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqqmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldlh1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="TutorialControles" type="CanvasLayer" unique_id=316437117]
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1566317424]
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 70.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jrgri")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1666318016]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="GrupoMovimento" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1680252114]
 layout_mode = 2
-
-[node name="TeclasMovimento" type="HBoxContainer" parent="PanelContainer/HBoxContainer/GrupoMovimento" unique_id=538975920]
-layout_mode = 2
-
-[node name="SpriteTeclaA" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=304010346]
-
-[node name="SpriteTeclaSetaEsq" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=786517411]
-
-[node name="SpriteTeclaD" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=381531838]
-
-[node name="SpriteSetaDir" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=828254197]
+theme_override_constants/separation = 0
 
 [node name="LabelMovimento" type="Label" parent="PanelContainer/HBoxContainer/GrupoMovimento" unique_id=1434466501]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_lij4c")
-text = "Mover
-"
+text = "Mover"
+horizontal_alignment = 1
+
+[node name="TeclasMovimento" type="HBoxContainer" parent="PanelContainer/HBoxContainer/GrupoMovimento" unique_id=538975920]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ColunaEsquerda" type="VBoxContainer" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=1643327471]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ControlA" type="Control" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaEsquerda" unique_id=804548775]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpriteTeclaA" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaEsquerda/ControlA" unique_id=304010346]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_ylgvm")
+
+[node name="ControlSetaEsq" type="Control" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaEsquerda" unique_id=567355221]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpriteTeclaSetaEsq" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaEsquerda/ControlSetaEsq" unique_id=786517411]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_m1w0d")
+
+[node name="ColunaDireita" type="VBoxContainer" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento" unique_id=2045660890]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ControlD" type="Control" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaDireita" unique_id=110753722]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpriteTeclaD" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaDireita/ControlD" unique_id=381531838]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_rj7i2")
+
+[node name="ControlSetaDir" type="Control" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaDireita" unique_id=1499635942]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpriteSetaDir" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoMovimento/TeclasMovimento/ColunaDireita/ControlSetaDir" unique_id=828254197]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_tyvx8")
 
 [node name="GrupoPulo" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=241038414]
 layout_mode = 2
-
-[node name="SpriteTeclaW" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoPulo" unique_id=889984834]
-sprite_frames = SubResource("SpriteFrames_g4v7s")
+theme_override_constants/separation = 0
 
 [node name="LabelPulo" type="Label" parent="PanelContainer/HBoxContainer/GrupoPulo" unique_id=1871688920]
 layout_mode = 2
-text = "Pular
-"
+theme_override_fonts/font = ExtResource("1_lij4c")
+text = "Pular"
+horizontal_alignment = 1
+
+[node name="ControlW" type="Control" parent="PanelContainer/HBoxContainer/GrupoPulo" unique_id=588700638]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SpriteTeclaW" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoPulo/ControlW" unique_id=889984834]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
 
 [node name="GrupoDescer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1511018925]
 layout_mode = 2
-
-[node name="SpriteTeclaS" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=1489794383]
-
-[node name="SpriteTeclaSetaBaixo" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=860132685]
+theme_override_constants/separation = 0
 
 [node name="LabelDescer" type="Label" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=1935011843]
 layout_mode = 2
-text = "Descer
-"
+theme_override_fonts/font = ExtResource("1_lij4c")
+text = "Descer"
+horizontal_alignment = 1
+
+[node name="ControlS" type="Control" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=822423169]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpriteTeclaS" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoDescer/ControlS" unique_id=1489794383]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_w7tls")
+
+[node name="ControlSetaBaixo" type="Control" parent="PanelContainer/HBoxContainer/GrupoDescer" unique_id=1946268542]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpriteTeclaSetaBaixo" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoDescer/ControlSetaBaixo" unique_id=860132685]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_5tp2n")
 
 [node name="GrupoTroca" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=863303830]
 layout_mode = 2
-
-[node name="SpriteTeclaJ" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1794723581]
-
-[node name="SpriteTeclaZ" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1714834709]
+theme_override_constants/separation = 0
 
 [node name="LabelTroca" type="Label" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1367090723]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lij4c")
 text = "Trocar dimensão"
+horizontal_alignment = 1
+
+[node name="ControlJ" type="Control" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=1794498812]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpriteTeclaJ" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoTroca/ControlJ" unique_id=1794723581]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_qy08n")
+
+[node name="ControlZ" type="Control" parent="PanelContainer/HBoxContainer/GrupoTroca" unique_id=508544496]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SpriteTeclaZ" type="AnimatedSprite2D" parent="PanelContainer/HBoxContainer/GrupoTroca/ControlZ" unique_id=1714834709]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_spd5u")
