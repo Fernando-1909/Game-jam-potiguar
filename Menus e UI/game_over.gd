@@ -8,8 +8,10 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Garante que fique oculto ao iniciar o jogo
 	hide()
+@onready var sfx_perdeu: AudioStreamPlayer = $Sfx_perdeu
 
 func game_over() -> void:
+	sfx_perdeu.play()
 	show()
 	get_tree().paused = true
 

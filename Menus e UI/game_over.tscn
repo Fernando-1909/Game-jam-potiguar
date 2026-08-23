@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cx88xc7gl046w" path="res://Menus e UI/Assets/TelaGameOver.png" id="1_pokat"]
 [ext_resource type="FontFile" uid="uid://7upr75g88p00" path="res://Menus e UI/Assets/DotGothic16-Regular.ttf" id="2_602t0"]
 [ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="3_602t0"]
+[ext_resource type="AudioStream" uid="uid://dcn8f3a1v1s6f" path="res://Assets/Sons/Lose.wav" id="5_xkktd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bspta"]
 texture = ExtResource("1_pokat")
@@ -167,6 +168,10 @@ bbcode_enabled = true
 text = "SAIR"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sfx_perdeu" type="AudioStreamPlayer" parent="." unique_id=1310285651]
+stream = ExtResource("5_xkktd")
+volume_db = -9.155
 
 [connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]

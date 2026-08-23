@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var SpriteProtagonista = $SpriteProtagonista
 @onready var camera: Camera2D = $Camera2D
+@onready var sfx_pulo: AudioStreamPlayer = $Sfx_pulo
+@onready var sfx_dano: AudioStreamPlayer = $Sfx_dano
 
 # Parametros de fisica - Mundo Real (Acordada)
 const VELOCIDADE_REAL: float = 135.0
@@ -14,12 +16,12 @@ const PULO_SONHO: float = -395.0
 const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.40
 
 # Parametros do Sistema de Insonia (0 a 100)
-@export var insonia_maxima: int = 100
-@export var ganho_insonia_real: float = 2   # Aumentado (antes era 1)
-@export var cura_insonia_sonho: float = 1   # Diminuido (antes era 3)
+@export var insonia_maxima: float = 100.0
+@export var ganho_insonia_real: float = 1.5   # Pontos de insônia que ganha POR SEGUNDO acordada (diminua para ficar mais lento)
+@export var cura_insonia_sonho: float = 2.0    # Pontos de insônia que cura POR SEGUNDO no sonho
+@export var velocidade_suavizacao_barra: float = 10.0 # Velocidade com que a barra visual desliza
 
-var insonia_atual: int = 0
-var acumulador_tempo_insonia: float = 0.0
+var insonia_atual: float = 0.0  # CORRIGIDO: mudado para float
 var esta_sonhando_player: bool = false
 var esta_invencivel: bool = false
 var esta_em_knockback: bool = false
@@ -44,11 +46,12 @@ var gravidade_base: float = ProjectSettings.get_setting("physics/2d/default_grav
 var tween_aviso: Tween
 
 func _ready() -> void:
-	insonia_atual = 0
+	insonia_atual = 0.0
 	if barra_vida:
 		barra_vida.min_value = 0
 		barra_vida.max_value = insonia_maxima
-		_atualizar_interface_ui()
+		barra_vida.value = insonia_atual
+		_atualizar_estilo_barra()
 
 	if camera:
 		camera.reset_smoothing()
@@ -63,6 +66,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("Descer") and is_on_floor():
 			_descer_plataforma()
 		elif Input.is_action_just_pressed("Pulo") and is_on_floor():
+			sfx_pulo.play()
 			velocity.y = pulo_atual
 
 		var direcao = Input.get_axis("Esquerda", "Direita")
@@ -172,23 +176,20 @@ func _verificar_colisoes_dano() -> void:
 			causou_dano = true
 
 		if causou_dano:
+			sfx_dano.play()
 			tomar_dano(33)
 			break
 
 func _processar_insonia(delta: float) -> void:
-	acumulador_tempo_insonia += delta
+	# Incremento contínuo e suave baseado no delta
+	if esta_sonhando_player:
+		insonia_atual = clampf(insonia_atual - (cura_insonia_sonho * delta), 0.0, insonia_maxima)
+	else:
+		insonia_atual = clampf(insonia_atual + (ganho_insonia_real * delta), 0.0, insonia_maxima)
+		if insonia_atual >= insonia_maxima:
+			morrer()
 
-	if acumulador_tempo_insonia >= 0.5:
-		acumulador_tempo_insonia -= 0.5
-
-		if esta_sonhando_player:
-			insonia_atual = clampi(insonia_atual - cura_insonia_sonho, 0, insonia_maxima)
-		else:
-			insonia_atual = clampi(insonia_atual + ganho_insonia_real, 0, insonia_maxima)
-			if insonia_atual >= insonia_maxima:
-				morrer()
-
-		_atualizar_interface_ui()
+	_atualizar_interface_ui(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Mudar estado") and not event.is_echo():
@@ -200,13 +201,11 @@ func atualizar_modo_sonho(esta_sonhando: bool) -> void:
 		velocidade_atual = VELOCIDADE_SONHO
 		pulo_atual = PULO_SONHO
 		multiplicador_gravidade_atual = MULTIPLICADOR_GRAVIDADE_SONHO
-		# Layer 1 (chao geral) + Layer 3 (Mundo dos Sonhos = bit 4)
 		collision_mask = 1 + 4
 	else:
 		velocidade_atual = VELOCIDADE_REAL
 		pulo_atual = PULO_REAL
 		multiplicador_gravidade_atual = MULTIPLICADOR_GRAVIDADE_REAL
-		# Layer 1 (chao geral) + Layer 2 (Mundo Real = bit 2)
 		collision_mask = 1 + 2
 
 func tomar_dano(quantidade: int = 33) -> void:
@@ -215,9 +214,8 @@ func tomar_dano(quantidade: int = 33) -> void:
 
 	get_tree().call_group("boss", "tocar_animacao_acerto")
 
-	insonia_atual = clampi(insonia_atual + quantidade, 0, insonia_maxima)
+	insonia_atual = clampf(insonia_atual + quantidade, 0.0, insonia_maxima)
 	esta_invencivel = true
-	_atualizar_interface_ui()
 
 	if insonia_atual >= insonia_maxima:
 		morrer()
@@ -244,11 +242,27 @@ func _encerrar_knockback_apos_tempo(tempo: float) -> void:
 	await get_tree().create_timer(tempo).timeout
 	esta_em_knockback = false
 
-func _atualizar_interface_ui() -> void:
+func _atualizar_interface_ui(delta: float = 0.016) -> void:
 	if not barra_vida:
 		return
 
-	barra_vida.value = insonia_atual
+	# Interpola o valor da barra visual para deslizar suavemente até o valor atual
+	barra_vida.value = move_toward(barra_vida.value, insonia_atual, velocidade_suavizacao_barra * delta * 10.0)
+
+	_atualizar_estilo_barra()
+
+func _atualizar_estilo_barra() -> void:
+	var porcentagem: float = insonia_atual / insonia_maxima
+
+	if has_node("UI/BarraVida/BarraHP"):
+		if porcentagem < 0.25:
+			$UI/BarraVida/BarraHP.play("hp1")
+		elif porcentagem < 0.50:
+			$UI/BarraVida/BarraHP.play("hp2")
+		elif porcentagem < 0.75:
+			$UI/BarraVida/BarraHP.play("hp3")
+		else:
+			$UI/BarraVida/BarraHP.play("hp4")
 
 	var stylebox = StyleBoxFlat.new()
 	stylebox.set_corner_radius_all(4)
@@ -272,7 +286,7 @@ func _descer_plataforma() -> void:
 
 	global_position.y += 8.0
 	velocity.y = 50.0
-
+	
 func morrer() -> void:
 	insonia_atual = insonia_maxima
 	_atualizar_interface_ui()

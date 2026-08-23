@@ -10,8 +10,8 @@ var pode_alternar: bool = true
 
 @export var tempo_espera_alternancia: float = 0.3
 
-const COR_REALIDADE = Color(1.0, 1.0, 1.0)
-const COR_SONHO = Color(0.735, 0.539, 0.118, 1.0)
+const COR_REALIDADE = Color(0.501, 0.501, 0.501, 1.0)
+const COR_SONHO = Color(0.898, 0.306, 0.98, 1.0)
 
 func _ready():
 	add_to_group("fase_atual")
