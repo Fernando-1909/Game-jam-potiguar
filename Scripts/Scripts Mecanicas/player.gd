@@ -27,9 +27,10 @@ const COR_AZUL_BEBE = Color("87CEEB")
 const COR_LILAS = Color("C77DFF")
 const COR_VERMELHO = Color("FF4D6D")
 
-# Referencias de nos
+# Referencias de nos da UI e Colisao
 @onready var barra_vida: ProgressBar = $UI/BarraVida
-@onready var mensagem_aviso: Label = $UI/MensagemAviso
+@onready var container_aviso: PanelContainer = $UI/ContainerAviso
+@onready var label_aviso: Label = $UI/ContainerAviso/MarginContainer/LabelAviso
 @onready var colisor_player: CollisionShape2D = $CollisionShape2D
 
 # Variaveis ativas de controle de fisica
@@ -49,8 +50,8 @@ func _ready() -> void:
 
 	if camera:
 		camera.reset_smoothing()
-		
-	# Define a mascara de colisao inicial (Layer 1 + Layer 2)
+
+	# Configura a mascara inicial (Layer 1 Geral + Layer 2 Realidade)
 	collision_mask = 1 + 2
 
 func _physics_process(delta: float) -> void:
@@ -102,22 +103,27 @@ func esta_obstruido_na_camada(mascara_camada: int) -> bool:
 
 	return colisoes.size() > 0
 
-func exibir_aviso_obstrucao(texto: String = "Dimensão Obstruída!") -> void:
-	if not mensagem_aviso:
+func exibir_aviso_obstrucao(texto: String = "Caminho bloqueado na outra dimensão!") -> void:
+	if not container_aviso:
 		return
 
-	mensagem_aviso.text = texto
-	mensagem_aviso.visible = true
-	mensagem_aviso.modulate.a = 1.0
+	if label_aviso:
+		label_aviso.text = texto
+
+	container_aviso.visible = true
+	container_aviso.modulate.a = 1.0
 
 	if tween_aviso and tween_aviso.is_running():
 		tween_aviso.kill()
 
 	tween_aviso = create_tween()
-	tween_aviso.tween_interval(0.6)
-	tween_aviso.tween_property(mensagem_aviso, "modulate:a", 0.0, 0.4)
+	tween_aviso.tween_interval(2.0)
+	tween_aviso.tween_property(container_aviso, "modulate:a", 0.0, 0.4)
+	
 	await tween_aviso.finished
-	mensagem_aviso.visible = false
+	
+	if container_aviso.modulate.a == 0.0:
+		container_aviso.visible = false
 
 func _verificar_colisoes_dano() -> void:
 	if esta_invencivel:
@@ -184,13 +190,13 @@ func atualizar_modo_sonho(esta_sonhando: bool) -> void:
 		velocidade_atual = VELOCIDADE_SONHO
 		pulo_atual = PULO_SONHO
 		multiplicador_gravidade_atual = MULTIPLICADOR_GRAVIDADE_SONHO
-		# Colide com Layer 1 (chao base) + Layer 3 (Mundo dos Sonhos)
+		# Layer 1 (chao geral) + Layer 3 (Mundo dos Sonhos = bit 4)
 		collision_mask = 1 + 4
 	else:
 		velocidade_atual = VELOCIDADE_REAL
 		pulo_atual = PULO_REAL
 		multiplicador_gravidade_atual = MULTIPLICADOR_GRAVIDADE_REAL
-		# Colide com Layer 1 (chao base) + Layer 2 (Mundo Real)
+		# Layer 1 (chao geral) + Layer 2 (Mundo Real = bit 2)
 		collision_mask = 1 + 2
 
 func tomar_dano(quantidade: int = 33) -> void:
