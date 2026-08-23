@@ -541,7 +541,7 @@ script = ExtResource("1_w1ihk")
 position = Vector2(-2, 1)
 
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
-position = Vector2(1734, 639)
+position = Vector2(61, 655)
 
 [node name="ObjetosRealidade" type="Node2D" parent="." unique_id=1828136548]
 
