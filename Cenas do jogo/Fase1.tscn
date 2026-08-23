@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://kclrjcgsv4ja" path="res://Cenas do jogo/fantasma_t.tscn" id="6_73fxv"]
 [ext_resource type="PackedScene" uid="uid://dwhmx4fpj74yk" path="res://Menus e UI/game_over.tscn" id="8_r1bcs"]
 [ext_resource type="Texture2D" uid="uid://c3dxla2ihiw8x" path="res://Assets/Bg_quarto.png" id="10_7vvoi"]
+[ext_resource type="Texture2D" uid="uid://bhucuffiyqx2u" path="res://Assets/Bgs_sonho.png" id="12_yjn6w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ptt1"]
 texture = ExtResource("3_f64ho")
@@ -567,7 +568,7 @@ tile_map_data = PackedByteArray("AAAAACwAAwAAAAEAAAABACwAAwAAAAEAAAACACwAAwAAAAE
 tile_set = SubResource("TileSet_yopmv")
 
 [node name="Boss" parent="." unique_id=1364269770 instance=ExtResource("5_c43i4")]
-position = Vector2(81, 552)
+position = Vector2(1777, 543)
 margem_esquerda_pixels = 40.0
 
 [node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node") instance=ExtResource("6_7v7xm")]
@@ -585,6 +586,14 @@ position = Vector2(674, 514)
 z_index = -1
 position = Vector2(80, 640)
 texture = ExtResource("10_7vvoi")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=293587469]
+layer = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=428769560]
+position = Vector2(639.375, 359.625)
+scale = Vector2(2.6651037, 2.6175923)
+texture = ExtResource("12_yjn6w")
 
 [editable path="Boss"]
 [editable path="Boss/MaoEsquerda"]
