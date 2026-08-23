@@ -56,10 +56,14 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_processar_insonia(delta)
+	
 
 	if not esta_em_knockback:
-		if Input.is_action_just_pressed("Pulo") and is_on_floor():
+		if Input.is_action_just_pressed("Descer") and is_on_floor():
+			_descer_plataforma()
+		elif Input.is_action_just_pressed("Pulo") and is_on_floor():
 			velocity.y = pulo_atual
+
 
 		var direcao = Input.get_axis("Esquerda", "Direita")
 
@@ -260,6 +264,17 @@ func _atualizar_interface_ui() -> void:
 		stylebox.bg_color = COR_VERMELHO
 
 	barra_vida.add_theme_stylebox_override("fill", stylebox)
+
+func _descer_plataforma() -> void:
+	if not is_on_floor():
+		return
+
+	# Move o player para baixo da superficie da plataforma One Way
+	global_position.y += 8.0
+
+	# Garante que ele continue caindo
+	velocity.y = 50.0
+
 
 func morrer() -> void:
 	insonia_atual = insonia_maxima
