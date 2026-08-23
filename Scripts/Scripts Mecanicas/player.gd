@@ -250,6 +250,21 @@ func _atualizar_interface_ui() -> void:
 
 	barra_vida.value = insonia_atual
 
+	var porcentagem: float = float(insonia_atual) / float(insonia_maxima)
+
+	if porcentagem < 0.25:
+		$UI/BarraVida/BarraHP.play("hp1")
+	elif porcentagem < 0.50:
+		$UI/BarraVida/BarraHP.play("hp2")
+	elif porcentagem < 0.75:
+		$UI/BarraVida/BarraHP.play("hp3")
+	else:
+		$UI/BarraVida/BarraHP.play("hp4")
+
+
+
+	barra_vida.value = insonia_atual
+
 	var stylebox = StyleBoxFlat.new()
 	stylebox.set_corner_radius_all(4)
 	stylebox.content_margin_left = 2.0
