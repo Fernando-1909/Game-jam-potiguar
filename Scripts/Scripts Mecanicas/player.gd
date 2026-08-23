@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var SpriteProtagonista = $SpriteProtagonista
 @onready var camera: Camera2D = $Camera2D
+@onready var sfx_pulo: AudioStreamPlayer = $Sfx_pulo
 
 # Parametros de fisica - Mundo Real (Acordada)
 const VELOCIDADE_REAL: float = 135.0
@@ -15,8 +16,8 @@ const MULTIPLICADOR_GRAVIDADE_SONHO: float = 0.40
 
 # Parametros do Sistema de Insonia (0 a 100)
 @export var insonia_maxima: int = 100
-@export var ganho_insonia_real: float = 2   # Aumentado (antes era 1)
-@export var cura_insonia_sonho: float = 1   # Diminuido (antes era 3)
+@export var ganho_insonia_real: float = 1.3
+@export var cura_insonia_sonho: float = 0.7 
 
 var insonia_atual: int = 0
 var acumulador_tempo_insonia: float = 0.0
@@ -63,6 +64,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("Descer") and is_on_floor():
 			_descer_plataforma()
 		elif Input.is_action_just_pressed("Pulo") and is_on_floor():
+			sfx_pulo.play()
 			velocity.y = pulo_atual
 
 		var direcao = Input.get_axis("Esquerda", "Direita")

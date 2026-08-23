@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bm0t1s1ntx8bv" path="res://Assets/BarraHP2.png" id="8_7fsmm"]
 [ext_resource type="Texture2D" uid="uid://dmcdboegrjxq2" path="res://Assets/BarraHP3.png" id="9_e52gr"]
 [ext_resource type="Texture2D" uid="uid://dxgtt0urbp6ll" path="res://Assets/BarraHP4.png" id="10_yue4p"]
+[ext_resource type="AudioStream" uid="uid://b1f1qey7qityr" path="res://Assets/Sons/jump.wav" id="12_7fsmm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ew6xa"]
 atlas = ExtResource("3_ovpim")
@@ -380,4 +381,5 @@ texture = ExtResource("6_oc7wf")
 [node name="GameOver" parent="." unique_id=2117096851 instance=ExtResource("6_ovpim")]
 visible = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1605287162]
+[node name="Sfx_pulo" type="AudioStreamPlayer" parent="." unique_id=1605287162]
+stream = ExtResource("12_7fsmm")
