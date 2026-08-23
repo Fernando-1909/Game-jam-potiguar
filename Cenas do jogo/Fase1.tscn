@@ -617,7 +617,7 @@ script = ExtResource("1_w1ihk")
 position = Vector2(-2, 1)
 
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
-position = Vector2(2295, 616)
+position = Vector2(56, 656)
 ganho_insonia_real = 2.0
 cura_insonia_sonho = 1.0
 
