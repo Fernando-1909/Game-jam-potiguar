@@ -618,7 +618,7 @@ script = ExtResource("1_w1ihk")
 position = Vector2(-2, 1)
 
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
-position = Vector2(56, 656)
+position = Vector2(2190, 659)
 ganho_insonia_real = 2.0
 cura_insonia_sonho = 1.0
 
@@ -648,8 +648,11 @@ tile_map_data = PackedByteArray("AAA7AA0AAAACAAAAAAA6AA0AAAACAAAAAAA5AA0AAAACAAA
 tile_set = SubResource("TileSet_g4v7s")
 
 [node name="Boss" parent="." unique_id=1364269770 instance=ExtResource("5_c43i4")]
-position = Vector2(2335, 383)
+position = Vector2(2325, 529)
 margem_esquerda_pixels = 34.0
+offset_altura_boss = -130.0
+zoom_final = Vector2(2.1, 2.1)
+margem_chao_bottom = 38.0
 
 [node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node") instance=ExtResource("6_7v7xm")]
 position = Vector2(2389, 328)

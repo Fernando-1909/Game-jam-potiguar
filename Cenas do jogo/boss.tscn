@@ -74,6 +74,7 @@ animations = [{
 }]
 
 [node name="Boss" type="Node2D" unique_id=1364269770]
+position = Vector2(-2, -155)
 script = ExtResource("1_n4y6c")
 margem_esquerda_pixels = 30.0
 

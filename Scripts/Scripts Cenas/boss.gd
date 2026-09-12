@@ -1,14 +1,20 @@
 extends Node2D
 
+@export_group("Configurações do Boss")
 @export var velocidade_chase: float = 120.0
 @export var margem_esquerda_pixels: float = 80.0 # Distancia do Boss ate a borda esquerda da tela
-@export var tempo_introducao: float = 2.5 # Aumentado para 2.5s para uma transição bem suave
+@export var tempo_introducao: float = 2.5 # Tempo da transição inicial
+@export var offset_altura_boss: float = -120.0 # Altura do Boss em relação ao chão (valores negativos sobem o Boss)
+
+@export_group("Configurações da Câmera")
+@export var zoom_final: Vector2 = Vector2(2.3, 2.3) # <--- Altere o Zoom aqui direto no Inspector
+@export var margem_chao_bottom: float = 16.0 # <--- Ajuste de pixels para mostrar a espessura do piso sem mostrar o vazio
 
 var ativo: bool = false
-var perseguindo: bool = false # Controla quando o Boss realmente comeca a andar e atacar
+var perseguindo: bool = false
 var mao_esquerda_vez: bool = true
 var player_ref: CharacterBody2D = null
-var y_fixo_chao: float = 0.0 # Trava a altura do Boss para nao subir quando o jogador pular
+var y_fixo_chao: float = 0.0
 
 @onready var camera: Camera2D = $CameraBoss
 @onready var sprite_boss = $SpriteBoss
@@ -47,25 +53,27 @@ func iniciar_boss_fight(player: CharacterBody2D) -> void:
 	ativo = true
 	perseguindo = false
 
-	# Trava a altura Y no momento da ativacao
-	y_fixo_chao = player.global_position.y - 40.0
-	
-	# Calcula a metade da tela com base no zoom final desejado (2.3)
-	var metade_largura_tela: float = 576.0
-	if camera:
-		metade_largura_tela = (get_viewport_rect().size.x / 2.3) * 0.5
+	# Define a posição vertical Y do Boss usando o offset do chão
+	var y_chao_player = player.global_position.y
+	y_fixo_chao = y_chao_player + offset_altura_boss
 
-	# Posiciona o Boss na altura fixa do chão e um pouco atrás do jogador
+	# Calcula o tamanho da tela em pixels do mundo com base no zoom final
+	var tamanho_viewport = get_viewport_rect().size
+	var metade_largura_tela: float = (tamanho_viewport.x / zoom_final.x) * 0.5
+	var metade_altura_tela: float = (tamanho_viewport.y / zoom_final.y) * 0.5
+
+	# Posiciona o Boss na altura Y fixa
 	global_position = Vector2(player.global_position.x - (metade_largura_tela * 1.2), y_fixo_chao)
 
-	# Posição local final onde a câmera deve parar em relação ao Boss
-	var posicao_camera_alvo = Vector2(metade_largura_tela - margem_esquerda_pixels, -30.0)
+	# CÁLCULO DINÂMICO DA CÂMERA:
+	# Trava a borda inferior da câmera exatamente na altura do chão (+ margem do bloco)
+	var y_camera_global_alvo = y_chao_player - metade_altura_tela + margem_chao_bottom
+	var y_camera_local_alvo = y_camera_global_alvo - global_position.y
+
+	var posicao_camera_alvo = Vector2(metade_largura_tela - margem_esquerda_pixels, y_camera_local_alvo)
 
 	if camera:
-		# Inicia no mesmo zoom do player (6.7)
 		camera.zoom = Vector2(6.7, 6.7)
-		
-		# Inicia a camera do Boss EXATAMENTE na posição do Player para nao ter corte brusco
 		camera.global_position = player.global_position
 		camera.make_current()
 
@@ -76,24 +84,21 @@ func iniciar_boss_fight(player: CharacterBody2D) -> void:
 	if sprite_boss is AnimatedSprite2D:
 		sprite_boss.play("Default")
 
-	# --- TRANSICAO CINEMATICA (ZOOM + POSICAO + FADE IN) ---
+	# --- TRANSIÇÃO CINEMÁTICA ---
 	var tween = create_tween().set_parallel(true)
 	
-	# Aparecer o Boss gradualmente na tela
 	tween.tween_property(self, "modulate:a", 1.0, 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
 	if camera:
-		# Transição suave do Zoom de 6.7 para 2.3
-		tween.tween_property(camera, "zoom", Vector2(2.3, 2.3), tempo_introducao)\
+		# Transição para o Zoom definido nas variáveis Export
+		tween.tween_property(camera, "zoom", zoom_final, tempo_introducao)\
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 			
-		# Transição suave da Posição da câmera saindo do Player e indo para o enquadramento do Boss
 		tween.tween_property(camera, "position", posicao_camera_alvo, tempo_introducao)\
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 
 	await tween.finished
 
-	# --- INÍCIO DA PERSEGUIÇÃO ---
 	perseguindo = true
 
 	if is_instance_valid(mao_esq) and mao_esq.has_method("ativar_mao"):
