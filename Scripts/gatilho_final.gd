@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_file("*.tscn") var cena_final: String = "res://final_cutscene.tscn"
+@export_file("*.tscn") var cena_final: String = "res://Cenas do jogo/final_cutscene.tscn"
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -8,4 +8,5 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	# Altere "Player" para o nome do nó do seu personagem ou verifique se está no grupo "player"
 	if body.name == "Player" or body.is_in_group("player"):
+		CutsceneTexto.modo_introducao = false
 		get_tree().change_scene_to_file(cena_final)
