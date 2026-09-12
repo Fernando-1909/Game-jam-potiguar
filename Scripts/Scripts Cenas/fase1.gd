@@ -25,7 +25,7 @@ func alternar_estado():
 	
 	if jogador and jogador.has_method("esta_obstruido_na_camada"):
 		# Layer 3 (Mundo dos Sonhos) -> valor da mascara = 4
-		# Layer 2 (Mundo Real)       -> valor da mascara = 2
+		# Layer 2 (Mundo Real)       -> valor da mascara = 2 awawa
 		var mascara_destino = 4 if not esta_sonhando else 2
 		
 		if jogador.esta_obstruido_na_camada(mascara_destino):
