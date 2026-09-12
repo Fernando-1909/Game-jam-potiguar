@@ -1,25 +1,34 @@
-extends Area2D
+extends Node2D
 
-@export_group("Gatilho do Boss")
+@export_group("Referências")
 @export var boss_node: Node2D
-
-@export_group("Gatilho do Tutorial")
 @export var tutorial_node: CanvasLayer
 
+@onready var area_quarto: Area2D = $AreaQuarto
+@onready var area_boss: Area2D = $AreaBoss
+
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
+	if is_instance_valid(area_quarto):
+		area_quarto.body_entered.connect(_on_area_quarto_body_entered)
+		area_quarto.body_exited.connect(_on_area_quarto_body_exited)
 
-func _on_body_entered(body: Node2D) -> void:
-	if not _e_player(body):
-		return
+	if is_instance_valid(area_boss):
+		area_boss.body_entered.connect(_on_area_boss_body_entered)
 
-	# Se a área tiver o nó do Tutorial associado, mostra ao entrar no quarto
-	if is_instance_valid(tutorial_node) and tutorial_node.has_method("mostrar_tutorial"):
-		tutorial_node.mostrar_tutorial()
+# --- CONTROLE DO TUTORIAL (ÁREA DO QUARTO) ---
+func _on_area_quarto_body_entered(body: Node2D) -> void:
+	if _e_player(body) and is_instance_valid(tutorial_node):
+		if tutorial_node.has_method("mostrar_tutorial"):
+			tutorial_node.mostrar_tutorial()
 
-	# Se a área tiver o nó do Boss associado, inicia a boss fight e se destrói
-	if is_instance_valid(boss_node) and boss_node.has_method("iniciar_boss_fight"):
+func _on_area_quarto_body_exited(body: Node2D) -> void:
+	if _e_player(body) and is_instance_valid(tutorial_node):
+		if tutorial_node.has_method("esconder_tutorial"):
+			tutorial_node.esconder_tutorial()
+
+# --- CONTROLE DO BOSS ---
+func _on_area_boss_body_entered(body: Node2D) -> void:
+	if _e_player(body) and is_instance_valid(boss_node):
 		body.set_physics_process(false)
 		if "velocity" in body:
 			body.velocity = Vector2.ZERO
@@ -27,17 +36,11 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(1.0).timeout
 
 		body.set_physics_process(true)
-		boss_node.iniciar_boss_fight(body)
-		
-		queue_free()
+		if boss_node.has_method("iniciar_boss_fight"):
+			boss_node.iniciar_boss_fight(body)
 
-func _on_body_exited(body: Node2D) -> void:
-	if not _e_player(body):
-		return
-
-	# Se a área tiver o nó do Tutorial associado, esconde ao sair do quarto
-	if is_instance_valid(tutorial_node) and tutorial_node.has_method("esconder_tutorial"):
-		tutorial_node.esconder_tutorial()
+		# Remove apenas o gatilho do boss para não repetir o evento
+		area_boss.queue_free()
 
 func _e_player(node: Node) -> bool:
 	return node.name == "Player" or node.is_in_group("player")

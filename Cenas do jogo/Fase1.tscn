@@ -618,7 +618,7 @@ script = ExtResource("1_w1ihk")
 position = Vector2(-2, 1)
 
 [node name="Player" parent="." unique_id=557778587 instance=ExtResource("2_w1ihk")]
-position = Vector2(1749, 313)
+position = Vector2(1318, 615)
 ganho_insonia_real = 2.0
 cura_insonia_sonho = 1.0
 
@@ -654,9 +654,16 @@ offset_altura_boss = -130.0
 zoom_final = Vector2(2.1, 2.1)
 margem_chao_bottom = 38.0
 
-[node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node") instance=ExtResource("6_7v7xm")]
+[node name="GatilhoBoss" parent="." unique_id=1139002131 node_paths=PackedStringArray("boss_node", "tutorial_node") instance=ExtResource("6_7v7xm")]
 position = Vector2(2389, 328)
 boss_node = NodePath("../Boss")
+tutorial_node = NodePath("../TutorialControles")
+
+[node name="AreaQuarto" parent="GatilhoBoss" index="0" unique_id=968658207]
+position = Vector2(-2253, -42)
+
+[node name="CollisionShape2D" parent="GatilhoBoss/AreaQuarto" index="0" unique_id=2013461191]
+position = Vector2(-46, 341)
 
 [node name="GameOver" parent="." unique_id=2117096851 instance=ExtResource("8_r1bcs")]
 visible = false
@@ -718,3 +725,4 @@ cena_final = "uid://csin876vb7jn8"
 [editable path="Boss"]
 [editable path="Boss/MaoEsquerda"]
 [editable path="Boss/MaoDireita"]
+[editable path="GatilhoBoss"]
