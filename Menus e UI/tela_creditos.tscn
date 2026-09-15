@@ -47,10 +47,11 @@ theme_override_constants/outline_size = 14
 theme_override_fonts/normal_font = ExtResource("2_brvfx")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]Créditos[/center]"
+text = "[center][wave amp=25.0 freq=2.0 connected=1]Créditos"
 fit_content = true
 
 [node name="Autor" type="RichTextLabel" parent="ColorRect/TextureRect" unique_id=1104274649]
+clip_contents = false
 layout_mode = 0
 offset_left = 50.0
 offset_top = 140.0
@@ -67,7 +68,7 @@ theme_override_constants/outline_size = 15
 theme_override_fonts/normal_font = ExtResource("2_fodn2")
 theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
-text = "FERNANDO MACEDO
+text = "[wave amp=25.0 freq=2.0 connected=1]FERNANDO MACEDO
 
 JOSÉ INÁCIO
 
@@ -85,6 +86,7 @@ scroll_active = false
 horizontal_alignment = 2
 
 [node name="Funçao" type="RichTextLabel" parent="ColorRect/TextureRect" unique_id=2067095807]
+clip_contents = false
 layout_mode = 0
 offset_left = 360.0
 offset_top = 140.0
@@ -101,7 +103,7 @@ theme_override_constants/outline_size = 15
 theme_override_fonts/normal_font = ExtResource("2_fodn2")
 theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
-text = "PROGRAMADOR
+text = "[wave amp=25.0 freq=2.0 connected=1]PROGRAMADOR
 GAME DESIGNER
 PROGRAMADOR
 GAME DESIGNER

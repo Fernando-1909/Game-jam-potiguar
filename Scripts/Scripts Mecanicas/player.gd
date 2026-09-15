@@ -25,9 +25,9 @@ var esta_invencivel: bool = false
 var esta_em_knockback: bool = false
 
 # Cores para o preenchimento da barra
-const COR_AZUL_BEBE = Color("87CEEB")
-const COR_LILAS = Color("C77DFF")
-const COR_VERMELHO = Color("FF4D6D")
+const COR_AZUL_BEBE = Color("0055ffff")
+const COR_LILAS = Color("ffe600ff")
+const COR_VERMELHO = Color("ff192bff")
 
 # Referencias de nos da UI e Colisao
 @onready var barra_vida: ProgressBar = $UI/BarraVida
