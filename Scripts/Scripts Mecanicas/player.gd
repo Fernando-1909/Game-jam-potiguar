@@ -24,10 +24,17 @@ var esta_sonhando_player: bool = false
 var esta_invencivel: bool = false
 var esta_em_knockback: bool = false
 
+<<<<<<< Updated upstream
 # Cores para o preenchimento da barra
 const COR_AZUL_BEBE = Color("0055ffff")
 const COR_LILAS = Color("ffe600ff")
 const COR_VERMELHO = Color("ff192bff")
+=======
+# Cores vibrantes/neon para máxima visibilidade na interface
+const COR_AZUL_NEON = Color("00ff00ff")  # Ciano Elétrico vibrante
+const COR_LILAS_NEON = Color("ffb700ff") # Roxo/Lilás de alto contraste
+const COR_VERMELHO_VIVO = Color("ff002fff") # Vermelho Alerta Intenso
+>>>>>>> Stashed changes
 
 # Referencias de nos da UI e Colisao
 @onready var barra_vida: ProgressBar = $UI/BarraVida
