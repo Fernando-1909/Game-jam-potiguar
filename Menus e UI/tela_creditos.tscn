@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bqt1yp35u7jxy"]
 
+[ext_resource type="Script" uid="uid://bxyvnsohquble" path="res://Menus e UI/tela_creditos.gd" id="1_brvfx"]
 [ext_resource type="Texture2D" uid="uid://c5q65ogteaj3i" path="res://Menus e UI/Assets/TelaCréditos.png" id="1_qsyql"]
 [ext_resource type="FontFile" uid="uid://7upr75g88p00" path="res://Menus e UI/Assets/DotGothic16-Regular.ttf" id="2_brvfx"]
 [ext_resource type="FontFile" uid="uid://dwf66heuds860" path="res://Menus e UI/Assets/Jersey15-Regular.ttf" id="2_fodn2"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_brvfx")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1555796134]
 layout_mode = 1

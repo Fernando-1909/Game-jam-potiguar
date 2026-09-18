@@ -32,12 +32,17 @@ func _ready() -> void:
 	if label_texto:
 		label_texto.text = ""
 	_executar_cutscene()
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Sair"):
+		get_tree().change_scene_to_file("res://Cenas do jogo/Fase1.tscn")
+
 
 func _executar_cutscene() -> void:
 	# Seleciona o grupo de falas e o destino correto com base no modo
 	var falas_atuais = falas_intro if modo_introducao else falas_final
 	var cena_destino = cena_fase1 if modo_introducao else cena_creditos
-
+	
 	for fala in falas_atuais:
 		label_texto.text = fala
 		label_texto.visible_ratio = 0.0

@@ -38,6 +38,9 @@ func _ready() -> void:
 	if is_instance_valid(mao_dir) and is_instance_valid(marker_dir):
 		mao_dir.posicao_origem = marker_dir
 		mao_dir.nome_animacao = "MaoDireita"
+	
+	if sprite_boss.animation != "default":
+		sprite_boss.play("default")
 
 	if timer_ataque:
 		if timer_ataque.timeout.is_connected(_executar_ataque):

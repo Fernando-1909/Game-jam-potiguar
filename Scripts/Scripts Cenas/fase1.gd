@@ -16,6 +16,11 @@ const COR_SONHO = Color(0.898, 0.306, 0.98, 1.0)
 func _ready():
 	add_to_group("fase_atual")
 	aplicar_estado(false)
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Sair"):
+		get_tree().change_scene_to_file("res://Menus e UI/menu_principal.tscn")
+
 
 func alternar_estado():
 	if not pode_alternar:

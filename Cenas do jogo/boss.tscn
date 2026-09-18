@@ -76,6 +76,7 @@ animations = [{
 [node name="Boss" type="Node2D" unique_id=1364269770]
 position = Vector2(-2, -155)
 script = ExtResource("1_n4y6c")
+velocidade_chase = 95.0
 margem_esquerda_pixels = 30.0
 
 [node name="SpriteBoss" type="AnimatedSprite2D" parent="." unique_id=1824576613]

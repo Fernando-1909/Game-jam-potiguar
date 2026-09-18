@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var velocidade_perseguicao: float = 90.0
+@export var velocidade_perseguicao: float = 78.0
 @export var raio_perseguicao: float = 250.0
 @export var permite_ser_derrotado: bool = false
 @export var sprite_original_olhando_esquerda: bool = true

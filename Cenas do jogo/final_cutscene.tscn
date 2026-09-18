@@ -8,8 +8,10 @@ script = ExtResource("1_3i0fg")
 cena_creditos = "uid://bqt1yp35u7jxy"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1942042708]
-offset_right = 1280.0
-offset_bottom = 747.0
+offset_left = -539.0
+offset_top = -253.0
+offset_right = 1866.0
+offset_bottom = 1097.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1049521541]
